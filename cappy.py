@@ -29,6 +29,8 @@ class URA(mask):
         
         # get r, s
         r, s = self._get_prime_pairs(self.rank)
+        self.r = r
+        self.s = s
         
         # generate C_r(I)
         C_r_I = np.zeros(r) - 1
@@ -58,6 +60,13 @@ class URA(mask):
         A_ij = np.roll(A_ij, int((r+1)/2), axis=0)
         A_ij = np.roll(A_ij, int((s+1)/2), axis=1)
         self.A_ij = A_ij
+        
+        self.info()
+        
+    def info(self):
+        print("Uniformly Redundant Array")
+        print("r, s: %i, %i" % (self.r, self.s))
+        print("multiplier: %i" % self.mult)
         
     def _get_prime_pairs(self, rank):
         pit = pyprimes.primes()
