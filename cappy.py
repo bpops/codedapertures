@@ -23,7 +23,7 @@ class mask():
         
 class URA(mask):
     
-    def __init__(self, rank=4, mult=2):
+    def __init__(self, rank=4, mult=2, quiet=False):
         self.rank = rank
         self.mult = mult
         
@@ -61,7 +61,8 @@ class URA(mask):
         A_ij = np.roll(A_ij, int((s+1)/2), axis=1)
         self.A_ij = A_ij
         
-        self.info()
+        if not quiet:
+            self.info()
         
     def info(self):
         print("Uniformly Redundant Array")
