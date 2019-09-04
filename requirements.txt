@@ -1,0 +1,3 @@
+pyprimes==0.1
+numpy==1.16.4
+matplotlib==3.1.0
