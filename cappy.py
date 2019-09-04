@@ -67,7 +67,7 @@ class ura(mask):
         
     def info(self):
         print("Uniformly Redundant Array")
-        print("r, s: %i, %i" % (self.r, self.s))
+        print("r, s: %i, %i (rank %i)" % (self.r, self.s, self.rank))
         print("multiplier: %i" % self.mult)
         
     def __get_prime_pairs(self, rank):
@@ -113,3 +113,33 @@ class rand_array(mask):
         print("r, s: %i, %i" % (self.r, self.s))
         print("desired fill factor: %.2f" % self.fill)
         print("actuall fill factor: %.2f" % self.actual_fill)
+        
+        
+# TODO: make the mura an extension of URA, and pull
+# some functionality into self functions for reuse.
+class mura(mask):
+    
+    def __init__(self, rank=5, quiet=False):
+        self.rank = rank
+        self.L = self.__get_prime(rank)
+        
+        A_i
+        
+        if not quiet:
+            self.info()
+        
+    def info(self):
+        print("Modified Uniformly Redundant Array")
+        print("L: %i (rank %i)" % (self.L, self.rank))
+        
+    def __get_prime(self, rank):
+        m = 1
+        this_rank = -1
+        while True:
+            L = 4*m + 1
+            if pyprimes.isprime(L):
+                this_rank += 1
+            if this_rank == rank:
+                break
+            m += 1
+        return L
