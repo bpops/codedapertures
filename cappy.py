@@ -22,7 +22,7 @@ class mask():
         else:
             return self.A_ij
         
-class URA(mask):
+class ura(mask):
     
     def __init__(self, rank=4, mult=2, quiet=False):
         self.rank = rank
@@ -89,7 +89,7 @@ class URA(mask):
 
         return p1, p2
         
-class random_array(mask):
+class rand_array(mask):
     
     def __init__(self, r=10, s=10, fill=0.5, quiet=False):
         self.r = r
