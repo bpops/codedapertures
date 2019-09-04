@@ -1,5 +1,5 @@
 # cappy
-a coded aperture python module
+a python module for easily generating common coded aperture patterns
 
 See `examples.ipynb` for examples of use.
 
