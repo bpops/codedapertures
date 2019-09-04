@@ -1,6 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import pyprimes
+import random
 
 class mask():
     
@@ -9,9 +10,9 @@ class mask():
     
     def show(self, inverse=False):
         if inverse:
-            plt.imshow(self.A_ij, cmap="binary")
-        else:
             plt.imshow(self.A_ij, cmap="binary_r")
+        else:
+            plt.imshow(self.A_ij, cmap="binary")
         plt.axis('off')
         plt.show()
 
@@ -28,7 +29,7 @@ class URA(mask):
         self.mult = mult
         
         # get r, s
-        r, s = self._get_prime_pairs(self.rank)
+        r, s = self.__get_prime_pairs(self.rank)
         self.r = r
         self.s = s
         
@@ -69,7 +70,7 @@ class URA(mask):
         print("r, s: %i, %i" % (self.r, self.s))
         print("multiplier: %i" % self.mult)
         
-    def _get_prime_pairs(self, rank):
+    def __get_prime_pairs(self, rank):
         pit = pyprimes.primes()
 
         # intialize
@@ -87,3 +88,28 @@ class URA(mask):
                 break
 
         return p1, p2
+        
+class random_array(mask):
+    
+    def __init__(self, r=10, s=10, fill=0.5, quiet=False):
+        self.r = r
+        self.s = s
+        self.fill = fill
+        
+        # randomly fill
+        A_ij = np.zeros([r, s])
+        for i in range(r):
+            for j in range(s):
+                if random.random() < self.fill:
+                    A_ij[i,j] = 1
+        self.A_ij = A_ij
+        self.actual_fill = np.sum(A_ij)/(self.r*self.s)
+        
+        if not quiet:
+            self.info()
+        
+    def info(self):
+        print("Random Array")
+        print("r, s: %i, %i" % (self.r, self.s))
+        print("desired fill factor: %.2f" % self.fill)
+        print("actuall fill factor: %.2f" % self.actual_fill)
