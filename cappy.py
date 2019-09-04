@@ -77,7 +77,7 @@ class URA(mask):
         p1 = next(pit)
         this_rank = -1
 
-        # loop through
+        # find primes
         while True:
             p2 = next(pit)
             if (p2-p1) == 2:
