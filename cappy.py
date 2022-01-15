@@ -1,14 +1,31 @@
+# CAPPY
+# Coded Aperture Production in PYthon
+# MIT license
+
 import numpy as np
 import matplotlib.pyplot as plt
 import pyprimes
 import random
 
 class mask():
-    
+    """
+    Mask Class
+
+    Holds one of several types of coded aperture patterns.
+    """
+
     def __init__(self):
-        A_ij = None
+        self.A_ij = None
     
     def show(self, inverse=False):
+        """
+        Plots the mask to the screen
+
+        Parameters
+        ----------
+        inverse : bool
+            if True, will invert the array before plotting
+        """
         if inverse:
             plt.imshow(self.A_ij, cmap="binary_r")
         else:
@@ -17,12 +34,38 @@ class mask():
         plt.show()
 
     def get_pattern(self, inverse=False):
+        """
+        Returns the pattern as an array
+
+        Parameters
+        ----------
+        inverse : bool
+            if True, will invert the array before returning
+
+        Returns
+        -------
+        A_ij : ndarrray
+            the 2d boolean mask
+        """
         if inverse:
             return 1-self.A_ij
         else:
             return self.A_ij
         
 class ura(mask):
+    """
+    Class to hold a Uniformly Redundant Array
+
+    Parameters
+    ----------
+    rank : int
+        the rank of prime pairs to use
+    mult : int
+        the number of times to tile the pattern in both dimensions
+    quiet : bool
+        if True, will print information about the array upon creation
+    """
+
     
     def __init__(self, rank=4, mult=2, quiet=False):
         self.rank = rank
@@ -62,15 +105,25 @@ class ura(mask):
         A_ij = np.roll(A_ij, int((s+1)/2), axis=1)
         self.A_ij = A_ij
         
-        if not quiet:
-            self.info()
+        if not quiet: self.report()
         
-    def info(self):
+    def report(self):
+        """
+        Report the array info
+        """
         print("Uniformly Redundant Array")
         print("r, s: %i, %i (rank %i)" % (self.r, self.s, self.rank))
         print("multiplier: %i" % self.mult)
         
     def __get_prime_pairs(self, rank):
+        """
+        Determine prime pairs at specified rank
+
+        Parmeters
+        ---------
+        rank : int
+            the rank of prime pairs to determine
+        """
         pit = pyprimes.primes()
 
         # intialize
@@ -90,6 +143,20 @@ class ura(mask):
         return p1, p2
         
 class rand_array(mask):
+    """
+    Class to hold a randomly generate array
+
+    Parameters
+    ----------
+    r : int
+        number of 'x' elements in the array
+    s : int
+        number of 'y' elements in the array
+    fill : float
+        fill factor fraction
+    quiet : bool
+        if True, will print mask info upon creation
+    """
     
     def __init__(self, r=10, s=10, fill=0.5, quiet=False):
         self.r = r
@@ -105,34 +172,41 @@ class rand_array(mask):
         self.A_ij = A_ij
         self.actual_fill = np.sum(A_ij)/(self.r*self.s)
         
-        if not quiet:
-            self.info()
+        if not quiet: self.report()
         
-    def info(self):
+    def report(self):
+        """
+        Report on the mask information
+        """
         print("Random Array")
         print("r, s: %i, %i" % (self.r, self.s))
         print("desired fill factor: %.2f" % self.fill)
         print("actuall fill factor: %.2f" % self.actual_fill)
         
-        
 # TODO: make the mura an extension of URA, and pull
 # some functionality into self functions for reuse.
 class mura(mask):
+    """
+    Class to hold a modified Uniformly Redundant Array
+    """
     
     def __init__(self, rank=5, quiet=False):
         self.rank = rank
         self.L = self.__get_prime(rank)
+
+        if not quiet: self.report()
         
-        A_i
-        
-        if not quiet:
-            self.info()
-        
-    def info(self):
+    def report(self):
+        """
+        Report on the mask information
+        """
         print("Modified Uniformly Redundant Array")
         print("L: %i (rank %i)" % (self.L, self.rank))
         
     def __get_prime(self, rank):
+        """
+        Determine prime of specified rank
+        """
         m = 1
         this_rank = -1
         while True:
