@@ -188,8 +188,6 @@ class rand_array(mask):
         print("desired fill factor: %.2f" % self.fill)
         print("actuall fill factor: %.2f" % self.actual_fill)
         
-# TODO: make the mura an extension of URA, and pull
-# some functionality into self functions for reuse.
 class mura(mask):
     """
     Modified Uniformly Redundant Array
