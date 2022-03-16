@@ -229,8 +229,8 @@ class mura(mask):
         for i in range(m*r):
             for j in range(m*s):
                 A_ij[i,j] = A_IJ[i%r,j%s]
-        A_ij = np.roll(A_ij, int((r+1)/2), axis=0)
-        A_ij = np.roll(A_ij, int((s+1)/2), axis=1)
+        #A_ij = np.roll(A_ij, int((r+1)/2), axis=0)
+        #A_ij = np.roll(A_ij, int((s+1)/2), axis=1)
         self.A_ij = A_ij
 
         if not quiet: self.report()
