@@ -5,10 +5,10 @@
 #          _|        _|    _|  _|        _|            _|                    
 #            _|_|_|  _|    _|  _|        _|            _|                    
 #                                                                                 
-#               Coded Aperture Production in PYthon                                                                              
+#                Coded Aperture Production in PYthon                                                                              
 #
 #                           MIT license
-#                 https://github.com/bpops/cappy
+#                  https://github.com/bpops/cappy
 #
 
 import numpy             as np
@@ -192,12 +192,46 @@ class rand_array(mask):
 # some functionality into self functions for reuse.
 class mura(mask):
     """
-    Class to hold a modified Uniformly Redundant Array
+    Modified Uniformly Redundant Array
     """
     
-    def __init__(self, rank=5, quiet=False):
+    def __init__(self, rank=5, quiet=False, mult=2):
         self.rank = rank
         self.L = self.__get_prime(rank)
+        self.mult = mult
+        
+        # get r, s
+        r = self.L
+        s = self.L
+        
+        # generate C_r(I)
+        C_r_I = np.zeros(r) - 1
+        C_s_J = np.zeros(s) - 1
+        for x in range(1, r):
+            C_r_I[x**2 % r] = 1
+        for y in range(1, s):
+            C_s_J[y**2 % s] = 1
+
+        # generate A_IJ
+        A_IJ = np.zeros([r,s])
+        for I in range(r):
+            for J in range(s):
+                if I == 0:
+                    A_IJ[I,J] = 0
+                elif J == 0:
+                    A_IJ[I,J] = 1
+                elif C_r_I[I] * C_s_J[J] == 1:
+                    A_IJ[I,J] = 1
+
+        # generate A_ij
+        m = self.mult
+        A_ij = np.zeros([m*r,m*s])
+        for i in range(m*r):
+            for j in range(m*s):
+                A_ij[i,j] = A_IJ[i%r,j%s]
+        A_ij = np.roll(A_ij, int((r+1)/2), axis=0)
+        A_ij = np.roll(A_ij, int((s+1)/2), axis=1)
+        self.A_ij = A_ij
 
         if not quiet: self.report()
         
