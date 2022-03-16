@@ -1,15 +1,24 @@
-# CAPPY
-# Coded Aperture Production in PYthon
-# MIT license
+#                                                                                 
+#            _|_|_|    _|_|    _|_|_|    _|_|_|    _|      _|                
+#          _|        _|    _|  _|    _|  _|    _|    _|  _|                  
+#          _|        _|_|_|_|  _|_|_|    _|_|_|        _|                    
+#          _|        _|    _|  _|        _|            _|                    
+#            _|_|_|  _|    _|  _|        _|            _|                    
+#                                                                                 
+#               Coded Aperture Production in PYthon                                                                              
+#
+#                           MIT license
+#                 https://github.com/bpops/cappy
+#
 
-import numpy as np
+import numpy             as np
 import matplotlib.pyplot as plt
 import pyprimes
 import random
 
 class mask():
     """
-    Mask Class
+    Mask
 
     Holds one of several types of coded aperture patterns.
     """
@@ -26,10 +35,8 @@ class mask():
         inverse : bool
             if True, will invert the array before plotting
         """
-        if inverse:
-            plt.imshow(self.A_ij, cmap="binary_r")
-        else:
-            plt.imshow(self.A_ij, cmap="binary")
+        cmap = "binary_r" if inverse else "binary"
+        plt.imshow(self.A_ij, cmap=cmap)
         plt.axis('off')
         plt.show()
 
@@ -47,14 +54,12 @@ class mask():
         A_ij : ndarrray
             the 2d boolean mask
         """
-        if inverse:
-            return 1-self.A_ij
-        else:
-            return self.A_ij
-        
+        mask = 1-self.A_ij if inverse else self.A_ij
+        return mask
+            
 class ura(mask):
     """
-    Class to hold a Uniformly Redundant Array
+    Uniformly Redundant Array
 
     Parameters
     ----------
