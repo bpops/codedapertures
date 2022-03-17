@@ -56,6 +56,17 @@ class mask():
         """
         mask = 1-self.A_ij if inverse else self.A_ij
         return mask
+
+    def add_border(self, width, empty=False):
+        """
+        Adds a border with the given width
+
+        Parameters
+        ----------
+        width : int
+            width of border
+        """
+        pass
             
 class ura(mask):
     """
