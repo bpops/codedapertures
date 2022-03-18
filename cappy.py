@@ -35,8 +35,9 @@ class mask():
         inverse : bool
             if True, will invert the array before plotting
         """
+        plt.rcParams['figure.figsize'] = [8,8]
         cmap = "binary_r" if inverse else "binary"
-        plt.imshow(self.A_ij, cmap=cmap)
+        plt.imshow(self.A_ij, cmap=cmap, aspect=1)
         plt.axis('off')
         plt.show()
 
@@ -66,7 +67,14 @@ class mask():
         width : int
             width of border
         """
-        pass
+        
+        new_width  = self.width  + width*2
+        new_height = self.height + width*2
+        new_mask   = np.zeros((new_width, new_height))
+        if not empty: new_mask = new_mask +1
+        new_mask[width:-width,width:-width] = self.A_ij
+        self.A_ij = new_mask
+
             
 class ura(mask):
     """
