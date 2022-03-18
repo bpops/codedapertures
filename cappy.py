@@ -121,6 +121,10 @@ class ura(mask):
         A_ij = np.roll(A_ij, int((s+1)/2), axis=1)
         self.A_ij = A_ij
         
+        # get width/height
+        self.width = self.A_ij.shape[0]
+        self.height = self.A_ij.shape[1]
+
         if not quiet: self.report()
         
     def report(self):
@@ -188,6 +192,10 @@ class rand_array(mask):
         self.A_ij = A_ij
         self.actual_fill = np.sum(A_ij)/(self.r*self.s)
         
+        # get width/height
+        self.width = self.A_ij.shape[0]
+        self.height = self.A_ij.shape[1]
+
         if not quiet: self.report()
         
     def report(self):
@@ -238,9 +246,12 @@ class mura(mask):
         for i in range(m*r):
             for j in range(m*s):
                 A_ij[i,j] = A_IJ[i%r,j%s]
-        #A_ij = np.roll(A_ij, int((r+1)/2), axis=0)
-        #A_ij = np.roll(A_ij, int((s+1)/2), axis=1)
         self.A_ij = A_ij
+
+        # get width/height
+        self.width = self.A_ij.shape[0]
+        self.height = self.A_ij.shape[1]
+
 
         if not quiet: self.report()
         
