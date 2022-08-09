@@ -75,6 +75,50 @@ class mask():
         new_mask[width:-width,width:-width] = self.A_ij
         self.A_ij = new_mask
 
+class rand_array(mask):
+    """
+    Class to hold a randomly generate array
+
+    Parameters
+    ----------
+    r : int
+        number of 'x' elements in the array
+    s : int
+        number of 'y' elements in the array
+    fill : float
+        fill factor fraction
+    quiet : bool
+        if True, will print mask info upon creation
+    """
+    
+    def __init__(self, r=10, s=10, fill=0.5, quiet=False):
+        self.r = r
+        self.s = s
+        self.fill = fill
+        
+        # randomly fill
+        A_ij = np.zeros([r, s])
+        for i in range(r):
+            for j in range(s):
+                if random.random() < self.fill:
+                    A_ij[i,j] = 1
+        self.A_ij = A_ij
+        self.actual_fill = np.sum(A_ij)/(self.r*self.s)
+        
+        # get width/height
+        self.width = self.A_ij.shape[0]
+        self.height = self.A_ij.shape[1]
+
+        if not quiet: self.report()
+        
+    def report(self):
+        """
+        Report on the mask information
+        """
+        print("Random Array")
+        print("r, s: %i, %i" % (self.r, self.s))
+        print("desired fill factor: %.2f" % self.fill)
+        print("actuall fill factor: %.2f" % self.actual_fill)
             
 class ura(mask):
     """
@@ -90,7 +134,6 @@ class ura(mask):
         if True, will print information about the array upon creation
     """
 
-    
     def __init__(self, rank=4, mult=2, quiet=False):
         self.rank = rank
         self.mult = mult
@@ -169,51 +212,6 @@ class ura(mask):
                 break
 
         return p1, p2
-        
-class rand_array(mask):
-    """
-    Class to hold a randomly generate array
-
-    Parameters
-    ----------
-    r : int
-        number of 'x' elements in the array
-    s : int
-        number of 'y' elements in the array
-    fill : float
-        fill factor fraction
-    quiet : bool
-        if True, will print mask info upon creation
-    """
-    
-    def __init__(self, r=10, s=10, fill=0.5, quiet=False):
-        self.r = r
-        self.s = s
-        self.fill = fill
-        
-        # randomly fill
-        A_ij = np.zeros([r, s])
-        for i in range(r):
-            for j in range(s):
-                if random.random() < self.fill:
-                    A_ij[i,j] = 1
-        self.A_ij = A_ij
-        self.actual_fill = np.sum(A_ij)/(self.r*self.s)
-        
-        # get width/height
-        self.width = self.A_ij.shape[0]
-        self.height = self.A_ij.shape[1]
-
-        if not quiet: self.report()
-        
-    def report(self):
-        """
-        Report on the mask information
-        """
-        print("Random Array")
-        print("r, s: %i, %i" % (self.r, self.s))
-        print("desired fill factor: %.2f" % self.fill)
-        print("actuall fill factor: %.2f" % self.actual_fill)
         
 class mura(mask):
     """
