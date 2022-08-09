@@ -6,5 +6,7 @@ setuptools.setup(name='codedapertures',
       url='https://github.com/bpops/cappy',
       author='bpops',
       license='MIT',
-      packages=setuptools.find_packages(),
+      install_requires=['pyprimes',
+                'numpy',
+                'matplotlib'],
       zip_safe=False)
