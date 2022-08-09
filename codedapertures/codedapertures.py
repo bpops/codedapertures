@@ -73,11 +73,11 @@ class mask():
         new_mask   = np.zeros((new_width, new_height))
         if not empty: new_mask = new_mask +1
         new_mask[width:-width,width:-width] = self.A_ij
-        self.A_ij = new_mask
+        self.A_ij  = new_mask
 
 class rand_array(mask):
     """
-    Class to hold a randomly generate array
+    Class to hold a randomly generated array
 
     Parameters
     ----------
