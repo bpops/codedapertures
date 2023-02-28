@@ -127,7 +127,7 @@ class ura(mask):
     Parameters
     ----------
     rank : int
-        the rank of prime pairs to use
+        the rank of prime pairs to use (0 -> 5, 1 -> 13, etc.)
     mult : int
         the number of times to tile the pattern in both dimensions
     quiet : bool
@@ -193,7 +193,7 @@ class ura(mask):
         Parmeters
         ---------
         rank : int
-            the rank of prime pairs to determine
+            the rank of prime pairs to determine (0 -> 5, 1 -> 13, etc.)
         """
         pit = pyprimes.primes()
 
@@ -271,6 +271,11 @@ class mura(mask):
     def __get_prime(self, rank):
         """
         Determine prime of specified rank
+
+        arameters
+        ----------
+        rank : int
+            the rank of prime pairs (0 -> 5, 1 -> 13, etc.)
         """
         m = 1
         this_rank = -1
