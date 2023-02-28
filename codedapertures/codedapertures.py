@@ -195,6 +195,9 @@ class ura(mask):
         rank : int
             the rank of prime pairs to determine (0 -> 5, 1 -> 13, etc.)
         """
+
+        assert rank >= 0, f"rank must be great than or equal to zero, got {rank}"
+
         pit = pyprimes.primes()
 
         # intialize
@@ -277,6 +280,9 @@ class mura(mask):
         rank : int
             the rank of prime pairs (0 -> 5, 1 -> 13, etc.)
         """
+
+        assert rank >= 0, f"rank must be great than or equal to zero, got {rank}"
+
         m = 1
         this_rank = -1
         while True:
