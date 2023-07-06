@@ -7,7 +7,7 @@ CAPPY is a python module that allows one to easily generate and display common c
 
 New to coded apertures? Here's a nice article: https://www.paulcarlisle.net/codedaperture/
 
-PyPI URL: https://pypi.org/project/codedapertures/0.1/
+PyPI URL: https://pypi.org/project/codedapertures/
 
 ### Usage
 
