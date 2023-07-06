@@ -16,7 +16,7 @@ Install with PIP:
 pip install codedapertures
 ```
 
-See `examples.ipynb` for examples of use.
+See [demo.ipynb](https://github.com/bpops/cappy/blob/master/demo.ipynb) for examples of use.
 
 
 ### Credits
