@@ -118,9 +118,9 @@ class rand_array(mask):
         Report on the mask information
         """
         print("Random Array")
-        print("x, y: %i, %i" % (self.r, self.s))
-        print("desired fill factor: %.2f" % self.fill)
-        print("actuall fill factor: %.2f" % self.actual_fill)
+        print(f"x, y: {self.r}, {self.s}")
+        print(f"desired fill factor: {self.fill:.2f}}")
+        print(f"actual  fill factor: {self.actual_fill:.2f}")
             
 class ura(mask):
     """
@@ -185,8 +185,8 @@ class ura(mask):
         Report the array info
         """
         print("Uniformly Redundant Array")
-        print("r, s: %i, %i (rank %i)" % (self.r, self.s, self.rank))
-        print("multiplier: %i" % self.mult)
+        print(f"r, s: {self.r}, {self.s} (rank {self.rank})")
+        print(f"multiplier: {self.mult}")
         
     def __get_prime_pairs(self, rank):
         """
@@ -271,7 +271,7 @@ class mura(mask):
         Report on the mask information
         """
         print("Modified Uniformly Redundant Array")
-        print("L: %i (rank %i)" % (self.L, self.rank))
+        print(f"L: {self.L} (rank {self.rank})")
         
     def __get_prime(self, rank):
         """
