@@ -26,7 +26,7 @@ class mask():
     def __init__(self):
         self.A_ij = None
     
-    def show(self, inverse=False):
+    def show(self, inverse=False, size=8):
         """
         Plots the mask to the screen
 
@@ -34,8 +34,10 @@ class mask():
         ----------
         inverse : bool
             if True, will invert the array before plotting
+        size : int
+            size of the plot (default 8)
         """
-        plt.rcParams['figure.figsize'] = [8,8]
+        plt.rcParams['figure.figsize'] = [size,size]
         cmap = "binary_r" if inverse else "binary"
         plt.imshow(self.A_ij, cmap=cmap, aspect=1)
         plt.axis('off')
@@ -77,13 +79,13 @@ class mask():
 
 class rand_array(mask):
     """
-    Class to hold a randomly generated array
+    Random Array
 
     Parameters
     ----------
-    r : int
+    x : int
         number of 'x' elements in the array
-    s : int
+    y : int
         number of 'y' elements in the array
     fill : float
         fill factor fraction
@@ -91,15 +93,15 @@ class rand_array(mask):
         if True, will print mask info upon creation
     """
     
-    def __init__(self, r=10, s=10, fill=0.5, quiet=False):
-        self.r = r
-        self.s = s
+    def __init__(self, x=10, y=10, fill=0.5, quiet=False):
+        self.r = x
+        self.s = y
         self.fill = fill
         
         # randomly fill
-        A_ij = np.zeros([r, s])
-        for i in range(r):
-            for j in range(s):
+        A_ij = np.zeros([self.r, self.s])
+        for i in range(self.r):
+            for j in range(self.s):
                 if random.random() < self.fill:
                     A_ij[i,j] = 1
         self.A_ij = A_ij
@@ -116,7 +118,7 @@ class rand_array(mask):
         Report on the mask information
         """
         print("Random Array")
-        print("r, s: %i, %i" % (self.r, self.s))
+        print("x, y: %i, %i" % (self.r, self.s))
         print("desired fill factor: %.2f" % self.fill)
         print("actuall fill factor: %.2f" % self.actual_fill)
             
@@ -127,7 +129,7 @@ class ura(mask):
     Parameters
     ----------
     rank : int
-        the rank of prime pairs to use (0 -> 5, 1 -> 13, etc.)
+        the rank of prime pairs to use (0 -> (5,3) 1 -> (13,11) etc.)
     mult : int
         the number of times to tile the pattern in both dimensions
     quiet : bool
