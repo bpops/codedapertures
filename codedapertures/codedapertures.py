@@ -119,7 +119,7 @@ class rand_array(mask):
         """
         print("Random Array")
         print(f"x, y: {self.r}, {self.s}")
-        print(f"desired fill factor: {self.fill:.2f}}")
+        print(f"desired fill factor: {self.fill:.2f}")
         print(f"actual  fill factor: {self.actual_fill:.2f}")
             
 class ura(mask):
