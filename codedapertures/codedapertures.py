@@ -221,6 +221,15 @@ class ura(mask):
 class mura(mask):
     """
     Modified Uniformly Redundant Array
+
+    Parameters
+    ----------
+    rank : int
+        the rank of prime pairs to use (0 -> (5,3) 1 -> (13,11) etc.)
+    mult : int
+        the number of times to tile the pattern in both dimensions
+    quiet : bool
+        if True, will print information about the array upon creation
     """
     
     def __init__(self, rank=5, quiet=False, mult=2):
@@ -277,7 +286,7 @@ class mura(mask):
         """
         Determine prime of specified rank
 
-        arameters
+        Parameters
         ----------
         rank : int
             the rank of prime pairs (0 -> 5, 1 -> 13, etc.)
