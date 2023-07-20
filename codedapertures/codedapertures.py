@@ -16,11 +16,12 @@ import matplotlib.pyplot as plt
 import pyprimes
 import random
 
-class mask_2d():
+
+class mask():
     """
     Mask
 
-    Holds one of several types of 2D coded aperture patterns.
+    Holds one of several types of coded aperture patterns.
     """
 
     def __init__(self):
@@ -39,7 +40,7 @@ class mask_2d():
         """
         plt.rcParams['figure.figsize'] = [size,size]
         cmap = "binary_r" if inverse else "binary"
-        plt.imshow(self.A_ij, cmap=cmap, aspect=1)
+        plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
         plt.axis('off')
         plt.show()
 
@@ -55,7 +56,7 @@ class mask_2d():
         Returns
         -------
         A_ij : ndarrray
-            the 2d boolean mask
+            the 2D boolean mask
         """
         mask = 1-self.A_ij if inverse else self.A_ij
         return mask
@@ -77,9 +78,74 @@ class mask_2d():
         new_mask[width:-width,width:-width] = self.A_ij
         self.A_ij  = new_mask
 
-class rand_2d(mask_2d):
+
+class rand_1d(mask):
     """
-    Random Array
+    Random 1-dimensional Array
+
+    Parameters
+    ----------
+    x : int
+        number of 'x' elements in the array
+    y : int
+        number of 'y' elements in the array
+    fill : float
+        fill factor fraction
+    quiet : bool
+        if True, will print mask info upon creation
+    """
+    
+    def __init__(self, x=10, y=10, fill=0.5, quiet=False):
+        self.r = x
+        self.s = y
+        self.fill = fill
+        
+        # randomly fill
+        A_ij = np.zeros([self.r, self.s])
+        for i in range(self.r):
+            if random.random() < self.fill:
+                A_ij[i,:] = 1
+        self.A_ij = A_ij
+        self.actual_fill = np.sum(A_ij[:,0])/(self.r)
+        
+        # get width/height
+        self.width = self.A_ij.shape[0]
+        self.height = self.A_ij.shape[1]
+
+        if not quiet: self.report()
+        
+    def report(self):
+        """
+        Report on the mask information
+        """
+        print("Random 1D Array")
+        print(f"x, y: {self.r}, {self.s}")
+        print(f"desired fill factor: {self.fill:.2f}")
+        print(f"actual  fill factor: {self.actual_fill:.2f}")
+
+    def get_pattern(self, inverse=False, collapse=False):
+        """
+        Returns the pattern as an array
+
+        Parameters
+        ----------
+        inverse : bool
+            if True, will invert the array before returning
+        collapse : bool
+            if True, will collapse the array to one-dimension
+
+        Returns
+        -------
+        A_ij : ndarrray
+            the 2D (or 1D, if selected) boolean mask
+        """
+        mask = 1-self.A_ij if inverse else self.A_ij
+        if collapse: mask = mask[:,0]
+        return mask
+
+class rand_2d(mask):
+    """
+    Random 2-dimensional Array
 
     Parameters
     ----------
@@ -117,12 +183,13 @@ class rand_2d(mask_2d):
         """
         Report on the mask information
         """
-        print("Random Array")
+        print("Random 2D Array")
         print(f"x, y: {self.r}, {self.s}")
         print(f"desired fill factor: {self.fill:.2f}")
         print(f"actual  fill factor: {self.actual_fill:.2f}")
-            
-class ura(mask_2d):
+
+
+class ura(mask):
     """
     Uniformly Redundant Array
 
@@ -217,8 +284,9 @@ class ura(mask_2d):
                 break
 
         return p1, p2
-        
-class mura(mask_2d):
+
+
+class mura(mask):
     """
     Modified Uniformly Redundant Array
 
