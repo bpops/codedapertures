@@ -16,11 +16,11 @@ import matplotlib.pyplot as plt
 import pyprimes
 import random
 
-class mask():
+class mask_2d():
     """
     Mask
 
-    Holds one of several types of coded aperture patterns.
+    Holds one of several types of 2D coded aperture patterns.
     """
 
     def __init__(self):
@@ -77,7 +77,7 @@ class mask():
         new_mask[width:-width,width:-width] = self.A_ij
         self.A_ij  = new_mask
 
-class rand_array(mask):
+class rand_2d(mask_2d):
     """
     Random Array
 
@@ -122,7 +122,7 @@ class rand_array(mask):
         print(f"desired fill factor: {self.fill:.2f}")
         print(f"actual  fill factor: {self.actual_fill:.2f}")
             
-class ura(mask):
+class ura(mask_2d):
     """
     Uniformly Redundant Array
 
@@ -218,7 +218,7 @@ class ura(mask):
 
         return p1, p2
         
-class mura(mask):
+class mura(mask_2d):
     """
     Modified Uniformly Redundant Array
 
