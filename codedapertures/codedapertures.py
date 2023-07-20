@@ -372,3 +372,26 @@ class mura(mask):
                 break
             m += 1
         return L
+    
+class shura(mask):
+    """
+    Skew-Hadamard Uniformly Redundant Array
+
+    Parameters
+    ----------
+    n : int
+        determines the order, v, where v=4n-1
+    r : int
+        feeds into pattern
+    quiet : bool
+        if True, will print information about the array upon creation
+    """
+
+    def __init__(self, n=6, r=5, quiet=False):
+        self.n = n
+        self.r = r
+        
+        # calculate intermediates
+        self.v   = 4*n-1
+        self.k   = 2*n-1
+        self.lam = n-1
