@@ -1,14 +1,14 @@
-#                                                                                 
-#            _|_|_|    _|_|    _|_|_|    _|_|_|    _|      _|                
-#          _|        _|    _|  _|    _|  _|    _|    _|  _|                  
-#          _|        _|_|_|_|  _|_|_|    _|_|_|        _|                    
-#          _|        _|    _|  _|        _|            _|                    
-#            _|_|_|  _|    _|  _|        _|            _|                    
-#                                                                                 
-#                Coded Aperture Production in PYthon                                                                              
 #
-#                           MIT license
-#                  https://github.com/bpops/cappy
+#       _____       _       _ _____             _                            
+#      |     |___ _| |___ _| |  _  |___ ___ ___| |_ _ _ ___ ___ ___          
+#      |   --| . | . | -_| . |     | . | -_|  _|  _| | |  _| -_|_ -|         
+#      |_____|___|___|___|___|__|__|  _|___|_| |_| |___|_| |___|___|         
+#                                  |_|                                       
+#
+#                  Coded Aperture Production in Python                                                                              
+#
+#                             MIT license
+#                    https://github.com/bpops/cappy
 #
 
 import numpy              as     np
