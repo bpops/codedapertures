@@ -11,8 +11,9 @@
 #                  https://github.com/bpops/cappy
 #
 
-import numpy             as np
-import matplotlib.pyplot as plt
+import numpy              as     np
+import matplotlib.pyplot  as     plt
+from   matplotlib.patches import RegularPolygon
 import pyprimes
 import random
 
@@ -380,18 +381,78 @@ class shura(mask):
     Parameters
     ----------
     n : int
-        determines the order, v, where v=4n-1
+        determines the order, v, where v=4n-1 (default 6)
     r : int
-        feeds into pattern
+        feeds into pattern (default 5)
+    mult : int
+        multiplier (default 10)
     quiet : bool
         if True, will print information about the array upon creation
     """
 
-    def __init__(self, n=6, r=5, quiet=False):
-        self.n = n
-        self.r = r
+    def __init__(self, n=6, r=5, mult=10, quiet=False):
+        self.n    = n
+        self.r    = r
+        self.mult = mult
         
         # calculate intermediates
         self.v   = 4*n-1
         self.k   = 2*n-1
         self.lam = n-1
+
+        # construct cyclic difference set D
+        self.D = np.zeros((int((self.v-1)/2)), dtype=np.int32)
+        for i in range(len(self.D)):
+            self.D[i] = ((i+1)**2) % self.v
+
+        # determine labels
+        rx = r*mult
+        self.l = np.zeros((rx,rx))
+        for i in range(rx):
+            for j in range(rx):
+                self.l[i,j] = (i + r*j) % self.v
+
+        # calculate mask
+        self.mask = np.zeros(self.l.shape)
+        for i in range(self.mask.shape[0]):
+            for j in range(self.mask.shape[1]):
+                if self.l[i,j] in self.D:
+                    self.mask[i,j] = 1
+
+    def show(self):
+        """
+        Plot the mask
+        """
+
+        # determine open/closed pixels
+        pix_close  = np.where(self.mask == 1)
+        pix_open   = np.where(self.mask == 0)
+        
+        x_coords = pix_close[0]
+        y_coords = pix_close[1]
+
+        hex_vert = 1/(np.sqrt(3)/2)
+        hex_radius = (hex_vert)/2.0
+
+        fig, ax = plt.subplots(1)
+        ax.set_aspect('equal')
+
+        for x, y in zip (x_coords, y_coords):
+
+            # determine patch origin
+            x += y * 0.5
+            y *= np.sqrt(3)/2
+
+            # recenter
+            x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0
+            y -= (self.mask.shape[1] * 1/hex_vert)/2.0
+
+            # add hexagon
+            hex = RegularPolygon((x, y), numVertices=6, radius=hex_radius, 
+                                    orientation=np.radians(60), 
+                                    facecolor='k', alpha=0.5, edgecolor='k')
+            ax.add_patch(hex)
+
+        plt.xlim(-self.mask.shape[0]/2.0,self.mask.shape[0]/2.0)
+        plt.ylim(-self.mask.shape[0]/2.0,self.mask.shape[1]/2.0)
+        plt.title(f"Skew-Hadamard URA of order {self.v}")
