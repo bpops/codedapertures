@@ -1,5 +1,5 @@
 # CodedApertures
-#### A python package for generating common coded aperture patterns
+#### a python package for generating coded apertures  
 
 [![Downloads](https://static.pepy.tech/personalized-badge/codedapertures?period=total&units=international_system&left_color=black&right_color=blue&left_text=Downloads)](https://pepy.tech/project/codedapertures)
 
@@ -18,6 +18,17 @@ pip install codedapertures
 
 See [demo.ipynb](https://github.com/bpops/codedapertures/blob/master/demo.ipynb) for examples of use.
 
+### (Planned) Inheritance Tree
+
+    mask
+    ├── mask_hex
+    │   └── shura
+    │   └── hura
+    └── mask_sq
+        ├── rand_1d
+        ├── rand_2d
+        ├── ura
+        └── hura
 
 ### Credits
 
