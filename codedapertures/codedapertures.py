@@ -428,8 +428,11 @@ class shura(mask):
         pix_close  = np.where(self.mask == 1)
         pix_open   = np.where(self.mask == 0)
         
-        x_coords = pix_close[0]
-        y_coords = pix_close[1]
+        # determine open/closed pixels
+        x_closed = pix_close[0]
+        y_closed = pix_close[1]
+        x_opened = pix_open[0]
+        y_opened = pix_open[1]
 
         hex_vert = 1/(np.sqrt(3)/2)
         hex_radius = (hex_vert)/2.0
@@ -437,7 +440,8 @@ class shura(mask):
         fig, ax = plt.subplots(1)
         ax.set_aspect('equal')
 
-        for x, y in zip (x_coords, y_coords):
+        # closed pixels
+        for x, y in zip (x_closed, y_closed):
 
             # determine patch origin
             x += y * 0.5
@@ -453,6 +457,23 @@ class shura(mask):
                                     facecolor='k', alpha=0.5, edgecolor='k')
             ax.add_patch(hex)
 
-        plt.xlim(-self.mask.shape[0]/2.0,self.mask.shape[0]/2.0)
-        plt.ylim(-self.mask.shape[0]/2.0,self.mask.shape[1]/2.0)
+        # open pixels
+        for x, y in zip (x_opened, y_opened):
+
+            # determine patch origin
+            x += y * 0.5
+            y *= np.sqrt(3)/2
+
+            # recenter
+            x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0
+            y -= (self.mask.shape[1] * 1/hex_vert)/2.0
+
+            # add hexagon
+            hex = RegularPolygon((x, y), numVertices=6, radius=hex_radius, 
+                                    orientation=np.radians(60), 
+                                    facecolor='w', alpha=0.2, edgecolor='k')
+            ax.add_patch(hex)
+
+        plt.xlim(-self.mask.shape[0]/3.0,self.mask.shape[0]/3.0)
+        plt.ylim(-self.mask.shape[0]/3.0,self.mask.shape[1]/3.0)
         plt.title(f"Skew-Hadamard URA of order {self.v}")
