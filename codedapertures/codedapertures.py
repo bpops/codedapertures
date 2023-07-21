@@ -458,7 +458,7 @@ class shura(mask):
 
             # determine patch origin
             x += y * 0.5
-            y *= np.sqrt(3)/2
+            y *= 1/hex_vert
 
             # recenter
             x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0
