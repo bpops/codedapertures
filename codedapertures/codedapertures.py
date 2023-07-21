@@ -341,7 +341,6 @@ class mura(mask):
         self.width = self.A_ij.shape[0]
         self.height = self.A_ij.shape[1]
 
-
         if not quiet: self.report()
         
     def report(self):
@@ -390,7 +389,7 @@ class shura(mask):
         if True, will print information about the array upon creation
     """
 
-    def __init__(self, n=6, r=5, mult=10, quiet=False):
+    def __init__(self, n=6, r=5, mult=4, quiet=False):
         self.n    = n
         self.r    = r
         self.mult = mult
@@ -418,6 +417,20 @@ class shura(mask):
             for j in range(self.mask.shape[1]):
                 if self.l[i,j] in self.D:
                     self.mask[i,j] = 1
+
+        if not quiet: self.report()
+
+    def report(self):
+        """
+        Report the array info
+        """
+        print("Skew-Hadamard Uniformly Redundant Array")
+        print(f"n: {self.n}")
+        print(f"order (v): {self.v}")
+        print(f"k: {self.k}")
+        print(f"lambda: {self.lam}")
+        print(f"r: {self.r}")
+        print(f"multiplier: {self.mult}")
 
     def show(self):
         """
@@ -476,4 +489,4 @@ class shura(mask):
 
         plt.xlim(-self.mask.shape[0]/3.0,self.mask.shape[0]/3.0)
         plt.ylim(-self.mask.shape[0]/3.0,self.mask.shape[1]/3.0)
-        plt.title(f"Skew-Hadamard URA of order {self.v}")
+        plt.title(f"SHURA [o:{self.v}, r:{self.r}, x:{self.mult}]")
