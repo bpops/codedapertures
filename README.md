@@ -18,18 +18,6 @@ pip install codedapertures
 
 See [demo.ipynb](https://github.com/bpops/codedapertures/blob/master/demo.ipynb) for examples of use.
 
-### (Planned) Inheritance Tree
-
-    mask
-    ├── mask_hex
-    │   └── shura
-    │   └── hura
-    └── mask_sq
-        ├── rand_1d
-        ├── rand_2d
-        ├── ura
-        └── hura
-
 ### Credits
 
 URA pattern: E. E. Fenimore and T. M. Cannon, "Coded aperture imaging with uniformly redundant arrays," Appl. Opt. 17, 337-347 (1978).
@@ -37,3 +25,5 @@ URA pattern: E. E. Fenimore and T. M. Cannon, "Coded aperture imaging with unifo
 MURA pattern:  E.E. Fenimore and S. R. Gottesman, "New family of binary arrays for coded aperture imaging" Appl. Opt. 28 (20): 4344-4352 (1989).
 
 SHURA and HURA pattern: M.H. Finger and T.A. Prince, "Hexagonal Uniformly Redundant Arrays for Coded-Aperture Imaging," Proc. 19th Int. Cosmic Ray Conf., 3: 295-298 (1985).
+
+This package will use an axial coordinate system for the hexagonal grids. It will follow the concept outlined at https://www.redblobgames.com/grids/hexagons/#map-storage.

@@ -5,12 +5,13 @@
 #      |_____|___|___|___|___|__|__|  _|___|_| |_| |___|_| |___|___|         
 #                                  |_|                                       
 #
-#                  Coded Aperture Production in Python                                                                              
+#            a python package for generating coded apertures                                                                        
 #
 #                             MIT license
 #                    https://github.com/bpops/cappy
 #
 
+#import copy
 import numpy              as     np
 import matplotlib.pyplot  as     plt
 from   matplotlib.patches import RegularPolygon
@@ -467,7 +468,7 @@ class shura(mask):
             # add hexagon
             hex = RegularPolygon((x, y), numVertices=6, radius=hex_radius, 
                                     orientation=np.radians(60), 
-                                    facecolor='k', alpha=0.5, edgecolor='k')
+                                    facecolor='k', alpha=0.6, edgecolor='k')
             ax.add_patch(hex)
 
         # open pixels
@@ -490,3 +491,88 @@ class shura(mask):
         plt.xlim(-self.mask.shape[0]/3.0,self.mask.shape[0]/3.0)
         plt.ylim(-self.mask.shape[0]/3.0,self.mask.shape[1]/3.0)
         plt.title(f"SHURA [o:{self.v}, r:{self.r}, x:{self.mult}]")
+
+
+class rand_hex():
+    """
+    Random Hexagonal Array
+
+    Parameters
+    ----------
+    radius: int
+        vertex-to-vertex radius of the array, minus half the pixel width
+    fill: float
+        fraction fill
+    quiet : bool
+        if True, will print information about the array upon creation
+    """
+    def __init__(self, radius=3, fill=0.5, quiet=False):
+
+        # get/determine mask properties
+        self.radius       = radius
+        self.diam         = self.radius*2+1
+        self.side_width   = radius + 1
+        self.axial_matrix = np.zeros((self.diam,self.diam))
+        self.loc_matrix   = np.zeros((2,self.diam,self.diam))
+        self.fill         = fill
+
+        # generate mask pattern
+        for i in range(self.diam):
+            for j in range(self.diam):
+                if (i+j > (self.radius-1)) and (i+j < (self.diam+self.radius)):
+                    if random.random() < self.fill:
+                        self.axial_matrix[i,j] = 1
+                else:
+                    self.axial_matrix[i,j] = np.nan
+
+        # determine actual fill factor
+        self.actual_fill = np.sum(self.axial_matrix == 1) / np.sum(~np.isnan(self.axial_matrix))
+
+        # generate locations
+        for i in range(self.diam):
+            for j in range(self.diam):
+                if not np.isnan(self.axial_matrix[i,j]):
+                    self.loc_matrix[0,i,j] = i*np.sqrt(3) - abs(j-self.radius)/2.0
+                    self.loc_matrix[1,i,j] = -i + j
+
+        if not quiet: self.report()
+
+    def report(self):
+        """
+        Report the array info
+        """
+        print("Random Hexagonal Array")
+        print(f"radius: {self.radius}")
+        print(f"diameter: {self.diam}")
+        print(f"side_width: {self.side_width}")
+        print(f"desired fill factor: {self.fill:.2f}")
+        print(f"actual  fill factor: {self.actual_fill:.2f}")
+
+    def show(self):
+        """
+        Plot the mask
+        """
+
+        # set up plot parameters
+        fig, ax = plt.subplots(1)
+        ax.set_aspect('equal')
+        hex_width = 1.0 # face-to-face distance
+        hex_vert  = (hex_width)*(2.0/np.sqrt(3))
+
+        # draw hexagon array
+        for y in range(self.diam):
+            row_width = self.diam - abs(self.radius-y)
+            start_i   = np.max((self.radius-y,0))
+            for x in range(row_width):
+                facecolor = 'k' if self.axial_matrix[x+start_i,y] == 1 else 'w'
+                hex = RegularPolygon((x+0.5*abs(y-self.radius)-self.radius,
+                                      ((y-self.radius)*((3/2)*hex_vert/2.0))),
+                                     numVertices=6, radius=hex_vert/2.0, 
+                                     orientation=np.radians(60), 
+                                     facecolor=facecolor, alpha=0.6, edgecolor='k')
+                ax.add_patch(hex)
+
+        # set axis limits
+        plt.xlim(-self.radius*hex_vert,self.radius*hex_vert)
+        plt.ylim(-self.radius,self.radius)
+        plt.title(f"Random Hex Array [diam: {self.diam}, fill: {self.actual_fill:.2f}]")
