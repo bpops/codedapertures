@@ -491,6 +491,7 @@ class shura():
         plt.xlim(-self.mask.shape[0]/3.0,self.mask.shape[0]/3.0)
         plt.ylim(-self.mask.shape[0]/3.0,self.mask.shape[1]/3.0)
         plt.title(f"SHURA [o:{self.v}, r:{self.r}, x:{self.mult}]")
+        plt.show()
 
 
 class rand_hex():
@@ -577,3 +578,4 @@ class rand_hex():
         plt.xlim(-self.radius*hex_vert,self.radius*hex_vert)
         plt.ylim(-self.radius,self.radius)
         plt.title(f"Random Hex Array [diam: {self.diam}, fill: {self.actual_fill:.2f}]")
+        plt.show()
