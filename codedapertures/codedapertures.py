@@ -19,11 +19,11 @@ import pyprimes
 import random
 
 
-class mask():
+class mask_sq():
     """
     Mask
 
-    Holds one of several types of coded aperture patterns.
+    Holds one of several types of square coded aperture patterns.
     """
 
     def __init__(self):
@@ -81,7 +81,7 @@ class mask():
         self.A_ij  = new_mask
 
 
-class rand_1d(mask):
+class rand_1d(mask_sq):
     """
     Random 1-dimensional Array
 
@@ -145,7 +145,7 @@ class rand_1d(mask):
         if collapse: mask = mask[:,0]
         return mask
 
-class rand_2d(mask):
+class rand_2d(mask_sq):
     """
     Random 2-dimensional Array
 
@@ -191,7 +191,7 @@ class rand_2d(mask):
         print(f"actual  fill factor: {self.actual_fill:.2f}")
 
 
-class ura(mask):
+class ura(mask_sq):
     """
     Uniformly Redundant Array
 
@@ -288,7 +288,7 @@ class ura(mask):
         return p1, p2
 
 
-class mura(mask):
+class mura(mask_sq):
     """
     Modified Uniformly Redundant Array
 
@@ -374,7 +374,7 @@ class mura(mask):
             m += 1
         return L
     
-class shura(mask):
+class shura():
     """
     Skew-Hadamard Uniformly Redundant Array
 
@@ -565,11 +565,12 @@ class rand_hex():
             start_i   = np.max((self.radius-y,0))
             for x in range(row_width):
                 facecolor = 'k' if self.axial_matrix[x+start_i,y] == 1 else 'w'
+                alpha     = 0.6 if self.axial_matrix[x+start_i,y] == 1 else 0.3
                 hex = RegularPolygon((x+0.5*abs(y-self.radius)-self.radius,
                                       ((y-self.radius)*((3/2)*hex_vert/2.0))),
                                      numVertices=6, radius=hex_vert/2.0, 
                                      orientation=np.radians(60), 
-                                     facecolor=facecolor, alpha=0.6, edgecolor='k')
+                                     facecolor=facecolor, alpha=alpha, edgecolor='k')
                 ax.add_patch(hex)
 
         # set axis limits
