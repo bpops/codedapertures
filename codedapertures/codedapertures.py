@@ -384,17 +384,23 @@ class shura():
         determines the order, v, where v=4n-1 (default 6)
     r : int
         feeds into pattern (default 5)
-    mult : int
-        multiplier (default 10)
     quiet : bool
         if True, will print information about the array upon creation
     """
 
-    def __init__(self, n=6, r=5, mult=4, quiet=False):
+    def __init__(self, n=6, r=5, radius=5, quiet=False):
         self.n    = n
         self.r    = r
-        self.mult = mult
-        
+
+        # calculate mask size
+        self.radius       = radius
+        self.diam         = self.radius*2+1
+        self.side_width   = radius + 1
+
+        # create axial matrix
+        self.axial_matrix = np.zeros((self.diam,self.diam))
+        self.loc_matrix   = np.zeros((2,self.diam,self.diam))
+
         # calculate intermediates
         self.v   = 4*n-1
         self.k   = 2*n-1
@@ -406,10 +412,11 @@ class shura():
             self.D[i] = ((i+1)**2) % self.v
 
         # determine labels
-        rx = r*mult
-        self.l = np.zeros((rx,rx))
-        for i in range(rx):
-            for j in range(rx):
+        self.rx = self.diam
+        self.ry = self.diam
+        self.l = np.zeros((self.rx,self.ry))
+        for i in range(self.rx):
+            for j in range(self.ry):
                 self.l[i,j] = (i + r*j) % self.v
 
         # calculate mask
@@ -418,6 +425,15 @@ class shura():
             for j in range(self.mask.shape[1]):
                 if self.l[i,j] in self.D:
                     self.mask[i,j] = 1
+
+        # map to axial matrix
+        for i in range(self.diam):
+            for j in range(self.diam):
+                if (i+j > (self.radius-1)) and (i+j < (self.diam+self.radius)):
+                    # this next line should not work correctly. WHY does it work?
+                    self.axial_matrix[i,j] = self.mask[i,j]
+                else:
+                    self.axial_matrix[i,j] = np.nan
 
         if not quiet: self.report()
 
@@ -431,11 +447,11 @@ class shura():
         print(f"k: {self.k}")
         print(f"lambda: {self.lam}")
         print(f"r: {self.r}")
-        print(f"multiplier: {self.mult}")
-
-    def show(self):
+        print(f"side: {self.side_width}")
+  
+    def show_rhombus(self):
         """
-        Plot the mask
+        Plot the mask rhombus
         """
 
         # determine open/closed pixels
@@ -462,7 +478,7 @@ class shura():
             y *= 1/hex_vert
 
             # recenter
-            x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0
+            x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0 -1/hex_vert
             y -= (self.mask.shape[1] * 1/hex_vert)/2.0
 
             # add hexagon
@@ -479,7 +495,7 @@ class shura():
             y *= np.sqrt(3)/2
 
             # recenter
-            x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0
+            x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0 -1/hex_vert
             y -= (self.mask.shape[1] * 1/hex_vert)/2.0
 
             # add hexagon
@@ -488,11 +504,43 @@ class shura():
                                     facecolor='w', alpha=0.2, edgecolor='k')
             ax.add_patch(hex)
 
-        plt.xlim(-self.mask.shape[0]/3.0,self.mask.shape[0]/3.0)
-        plt.ylim(-self.mask.shape[0]/3.0,self.mask.shape[1]/3.0)
-        plt.title(f"SHURA [o:{self.v}, r:{self.r}, x:{self.mult}]")
+        plt.xlim(-self.rx,self.rx)
+        plt.ylim(-self.ry,self.ry)
+        #plt.xlim(-10,10)
+        #plt.ylim(-10,10)
+        plt.title(f"SHURA rhombus [o:{self.v}, r:{self.r}]")
         plt.show()
 
+    def show(self):
+        """
+        Plot the mask
+        """
+
+        # set up plot parameters
+        fig, ax = plt.subplots(1)
+        ax.set_aspect('equal')
+        hex_width = 1.0 # face-to-face distance
+        hex_vert  = (hex_width)*(2.0/np.sqrt(3))
+
+        # draw hexagon array
+        for y in range(self.diam):
+            row_width = self.diam - abs(self.radius-y)
+            start_i   = np.max((self.radius-y,0))
+            for x in range(row_width):
+                facecolor = 'k' if self.axial_matrix[x+start_i,y] == 1 else 'w'
+                alpha     = 0.6 if self.axial_matrix[x+start_i,y] == 1 else 0.3
+                hex = RegularPolygon((x+0.5*abs(y-self.radius)-self.radius,
+                                      ((y-self.radius)*((3/2)*hex_vert/2.0))),
+                                     numVertices=6, radius=hex_vert/2.0, 
+                                     orientation=np.radians(60), 
+                                     facecolor=facecolor, alpha=alpha, edgecolor='k')
+                ax.add_patch(hex)
+
+        # set axis limits
+        plt.xlim(-self.radius*hex_vert,self.radius*hex_vert)
+        plt.ylim(-self.radius,self.radius)
+        plt.title(f"SHURA [o:{self.v}, r:{self.r}]")
+        plt.show()
 
 class rand_hex():
     """
