@@ -28,23 +28,6 @@ class mask_sq():
 
     def __init__(self):
         self.A_ij = None
-    
-    def show(self, inverse=False, size=8):
-        """
-        Plots the mask to the screen
-
-        Parameters
-        ----------
-        inverse : bool
-            if True, will invert the array before plotting
-        size : int
-            size of the plot (default 8)
-        """
-        plt.rcParams['figure.figsize'] = [size,size]
-        cmap = "binary_r" if inverse else "binary"
-        plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
-        plt.axis('off')
-        plt.show()
 
     def get_pattern(self, inverse=False):
         """
@@ -145,6 +128,24 @@ class rand_1d(mask_sq):
         if collapse: mask = mask[:,0]
         return mask
 
+    def show(self, inverse=False, size=8):
+        """
+        Plots the mask to the screen
+
+        Parameters
+        ----------
+        inverse : bool
+            if True, will invert the array before plotting
+        size : int
+            size of the plot (default 8)
+        """
+        plt.rcParams['figure.figsize'] = [size,size]
+        cmap = "binary_r" if inverse else "binary"
+        plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
+        plt.axis('off')
+        plt.title("Random 1D")
+        plt.show()
+
 class rand_2d(mask_sq):
     """
     Random 2-dimensional Array
@@ -190,6 +191,23 @@ class rand_2d(mask_sq):
         print(f"desired fill factor: {self.fill:.2f}")
         print(f"actual  fill factor: {self.actual_fill:.2f}")
 
+    def show(self, inverse=False, size=8):
+        """
+        Plots the mask to the screen
+
+        Parameters
+        ----------
+        inverse : bool
+            if True, will invert the array before plotting
+        size : int
+            size of the plot (default 8)
+        """
+        plt.rcParams['figure.figsize'] = [size,size]
+        cmap = "binary_r" if inverse else "binary"
+        plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
+        plt.axis('off')
+        plt.title("Random 2D")
+        plt.show()
 
 class ura(mask_sq):
     """
@@ -287,6 +305,23 @@ class ura(mask_sq):
 
         return p1, p2
 
+    def show(self, inverse=False, size=8):
+        """
+        Plots the mask to the screen
+
+        Parameters
+        ----------
+        inverse : bool
+            if True, will invert the array before plotting
+        size : int
+            size of the plot (default 8)
+        """
+        plt.rcParams['figure.figsize'] = [size,size]
+        cmap = "binary_r" if inverse else "binary"
+        plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
+        plt.axis('off')
+        plt.title("URA")
+        plt.show()
 
 class mura(mask_sq):
     """
@@ -374,6 +409,24 @@ class mura(mask_sq):
             m += 1
         return L
     
+    def show(self, inverse=False, size=8):
+        """
+        Plots the mask to the screen
+
+        Parameters
+        ----------
+        inverse : bool
+            if True, will invert the array before plotting
+        size : int
+            size of the plot (default 8)
+        """
+        plt.rcParams['figure.figsize'] = [size,size]
+        cmap = "binary_r" if inverse else "binary"
+        plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
+        plt.axis('off')
+        plt.title("MURA")
+        plt.show()
+
 class shura():
     """
     Skew-Hadamard Uniformly Redundant Array
