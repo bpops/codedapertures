@@ -11,7 +11,8 @@
 #                    https://github.com/bpops/cappy
 #
 
-#import copy
+from   commpy             import pnsequence
+import copy
 import numpy              as     np
 import matplotlib.pyplot  as     plt
 from   matplotlib.patches import RegularPolygon
@@ -483,7 +484,8 @@ class shura():
         for i in range(self.diam):
             for j in range(self.diam):
                 if (i+j > (self.radius-1)) and (i+j < (self.diam+self.radius)):
-                    # this next line should not work correctly. WHY does it work?
+                    # TODO: this next line should not work correctly. 
+                    # WHY does it work?
                     self.axial_matrix[i,j] = self.mask[i,j]
                 else:
                     self.axial_matrix[i,j] = np.nan
@@ -557,10 +559,8 @@ class shura():
                                     facecolor='w', alpha=0.2, edgecolor='k')
             ax.add_patch(hex)
 
-        plt.xlim(-self.rx,self.rx)
-        plt.ylim(-self.ry,self.ry)
-        #plt.xlim(-10,10)
-        #plt.ylim(-10,10)
+        plt.xlim(-self.rx/1.2,self.rx/1.2)
+        plt.ylim(-self.ry/2.0,self.ry/2.0)
         plt.title(f"SHURA rhombus [o:{self.v}, r:{self.r}]")
         plt.show()
 
@@ -680,3 +680,108 @@ class rand_hex():
         plt.ylim(-self.radius,self.radius)
         plt.title(f"Random Hex Array [diam: {self.diam}, fill: {self.actual_fill:.2f}]")
         plt.show()
+
+class pnp():
+    """
+    Pseudo-Noise Product Array
+
+    Paramters
+    ---------
+    m : int
+        degree of a_i
+    n : int
+        degree of b_i
+    """
+
+    def __init__(self, m,n):
+
+        # generate primitive polynomials
+        self.m = m
+        self.n = n
+        a = prim_poly(m)
+        b = prim_poly(n)
+        self.r = len(a)
+        self.s = len(b)
+
+        # generate mask
+        self.mask = np.zeros((self.r,self.s))
+        for i in range(self.r):
+            for j in range(self.s):
+                self.mask[i,j] = a[i]*b[j]
+        self.mask = np.roll(self.mask,(-(m-2),-(n-2)), axis=(0,1))
+
+        self.report()
+
+    def report(self):
+        """
+        Report the array info
+        """
+        print("Pseudo-Noise Product Array")
+        print(f"m: {self.m}")
+        print(f"n: {self.n}")
+        print(f"r (m width): {self.r}")
+        print(f"s (n width): {self.s}")
+
+    def show(self, inverse=False, size=5):
+        """
+        Plots the mask to the screen
+
+        Parameters
+        ----------
+        inverse : bool
+            if True, will invert the array before plotting
+        size : int
+            size of the plot (default 8)
+        """
+        plt.rcParams['figure.figsize'] = [size,size]
+        cmap = "binary_r" if inverse else "binary"
+        plt.imshow(self.mask, cmap="gray", origin='lower', aspect=1)
+        plt.axis('off')
+        plt.title(f"Pseudo-Noise Product Array [m: {self.m}, n: {self.n}]")
+        plt.show()
+        
+
+def prim_poly(m):
+    """
+    Primitive Polynomial
+
+    Parameters
+    ----------
+    m : int
+        degree
+
+    Returns
+    -------
+    pnsequence : ndarray
+        a pseudo-random sequence satisfying the primitive polynomial of the
+        degree specified
+    """
+
+    length = 2**m-1
+
+    # define the first 40 primitive polynomial indices here
+    h_x = {1:(0), 2:(1,0), 3:(1,0), 4:(1,0), 5:(2,0), 6:(1,0), 7:(1,0),
+           8:(6,5,1,0), 9:(4,0), 10:(3,0), 11:(2,0), 12:(7,4,3,0),
+           13:(4,3,1,0), 14:(12,11,1,0), 15:(1,0), 16:(5,3,2,0), 17:(3,0),
+           18:(7,0), 19:(6,5,1,0), 20:(3,0), 21:(2,0), 22:(1,0), 23:(5,0),
+           24:(4,3,1,0), 25:(3,0), 26:(8,7,1,0), 27:(8,7,1,0), 28:(3,0),
+           29:(2,0), 30:(16,15,1,0), 31:(3,0), 32:(28,27,1,0), 33:(13,0), 
+           34:(15,14,1,0), 35:(2,0), 36:(11,0), 37:(12,10,2,0), 38:(6,5,1,0),
+           39:(4,0), 40:(21,19,2,0)}
+    min_m = np.min(list(int(key) for key in h_x.keys()))
+    max_m = np.max(list(int(key) for key in h_x.keys()))
+
+    # check the degree exists
+    if (m < min_m) or (m > max_m):
+        raise ValueError(f"degree must be betweeen {min_m} and {max_m}")
+
+    # generate mask for this degree
+    mask = np.zeros(m)
+    for i in h_x[m]:
+        mask[m-i-1] = 1
+
+    # initialize seed to match results from [MacWilliams 1976]
+    seed = np.zeros(m)
+    seed[0] = 1
+
+    return pnsequence(m,seed,mask,2**m-1)

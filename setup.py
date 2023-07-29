@@ -9,5 +9,6 @@ setuptools.setup(name='codedapertures',
       license='MIT',
       install_requires=['pyprimes',
                 'numpy',
-                'matplotlib'],
+                'matplotlib',
+                'scikit-commpy'],
       zip_safe=False)
