@@ -340,7 +340,7 @@ class mura(mask_sq):
     
     def __init__(self, rank=5, quiet=False, mult=2):
         self.rank = rank
-        self.L = self.__get_prime(rank)
+        self.L = get_prime(rank)
         self.mult = mult
         
         # get r, s
@@ -386,29 +386,6 @@ class mura(mask_sq):
         """
         print("Modified Uniformly Redundant Array")
         print(f"L: {self.L} (rank {self.rank})")
-        
-    def __get_prime(self, rank):
-        """
-        Determine prime of specified rank
-
-        Parameters
-        ----------
-        rank : int
-            the rank of prime pairs (0 -> 5, 1 -> 13, etc.)
-        """
-
-        assert rank >= 0, f"rank must be great than or equal to zero, got {rank}"
-
-        m = 1
-        this_rank = -1
-        while True:
-            L = 4*m + 1
-            if pyprimes.isprime(L):
-                this_rank += 1
-            if this_rank == rank:
-                break
-            m += 1
-        return L
     
     def show(self, inverse=False, size=8):
         """
@@ -756,7 +733,7 @@ def prim_poly(m):
     Parameters
     ----------
     m : int
-        degree
+        degree (between 1 and 40); large numbers will take a very long time
 
     Returns
     -------
@@ -793,3 +770,26 @@ def prim_poly(m):
     seed[0] = 1
 
     return pnsequence(m,seed,mask,2**m-1)
+
+def get_prime(rank):
+    """
+    Determine prime of specified rank
+
+    Parameters
+    ----------
+    rank : int
+        the rank of the prime number
+    """
+
+    assert rank >= 0, f"rank must be great than or equal to zero, got {rank}"
+
+    m = 1
+    this_rank = -1
+    while True:
+        L = 4*m + 1
+        if pyprimes.isprime(L):
+            this_rank += 1
+        if this_rank == rank:
+            break
+        m += 1
+    return L
