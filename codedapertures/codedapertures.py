@@ -691,9 +691,11 @@ class pnp():
         degree of a_i
     n : int
         degree of b_i
+    mult : int
+        how many times to tile the array (default: 2)
     """
 
-    def __init__(self, m,n):
+    def __init__(self, m, n, mult=2):
 
         # generate primitive polynomials
         self.m = m
@@ -709,6 +711,12 @@ class pnp():
             for j in range(self.s):
                 self.mask[i,j] = a[i]*b[j]
         self.mask = np.roll(self.mask,(-(m-2),-(n-2)), axis=(0,1))
+
+        # tile array
+        self.mask = np.tile(self.mask, (mult, mult))
+        self.mask = np.roll(self.mask, (-int(self.mask.shape[0]/4.0)-1,
+                                        -int(self.mask.shape[1]/4.0)-1),
+                                        axis=(0,1))
 
         self.report()
 
