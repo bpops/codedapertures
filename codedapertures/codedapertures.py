@@ -411,16 +411,19 @@ class shura():
 
     Parameters
     ----------
-    n : int
-        determines the order, v, where v=4n-1 (default 6)
+    rank : int
+        determines the order, v, a prime of the form v=4n-1 
+        (default 6)
     r : int
         feeds into pattern (default 5)
     quiet : bool
         if True, will print information about the array upon creation
     """
 
-    def __init__(self, n=6, r=5, radius=5, quiet=False):
-        self.n    = n
+    def __init__(self, rank=4, r=5, radius=5, quiet=False):
+        self.rank = rank
+        self.v    = self.get_order(self.rank)
+        self.n    = int((self.v+1)/4)
         self.r    = r
 
         # calculate mask size
@@ -433,9 +436,9 @@ class shura():
         self.loc_matrix   = np.zeros((2,self.diam,self.diam))
 
         # calculate intermediates
-        self.v   = 4*n-1
-        self.k   = 2*n-1
-        self.lam = n-1
+        self.v   = 4*self.n-1
+        self.k   = 2*self.n-1
+        self.lam = self.n-1
 
         # construct cyclic difference set D
         self.D = np.zeros((int((self.v-1)/2)), dtype=np.int32)
@@ -469,11 +472,41 @@ class shura():
 
         if not quiet: self.report()
 
+    def get_order(self,rank):
+        """
+        Determine order from the given rank, n. Order is defined
+        as a prime satisfying the condition v=4n-1
+
+        Parameters
+        ----------
+        rank : int
+            rank; atleast 1
+
+        Returns
+        -------
+        v : int
+            prime order
+        """
+        
+        n = 1
+        this_rank = -1
+        while True:
+            v = 4*n - 1
+            if pyprimes.isprime(v):
+                this_rank += 1
+            if this_rank == rank:
+                break
+            n += 1
+        return v
+
+        
+
     def report(self):
         """
         Report the array info
         """
         print("Skew-Hadamard Uniformly Redundant Array")
+        print(f"rank: {self.rank}")
         print(f"n: {self.n}")
         print(f"order (v): {self.v}")
         print(f"k: {self.k}")
