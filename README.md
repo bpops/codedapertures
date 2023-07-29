@@ -26,4 +26,8 @@ MURA pattern:  E.E. Fenimore and S. R. Gottesman, "New family of binary arrays f
 
 SHURA and HURA pattern: M.H. Finger and T.A. Prince, "Hexagonal Uniformly Redundant Arrays for Coded-Aperture Imaging," Proc. 19th Int. Cosmic Ray Conf., 3: 295-298 (1985).
 
+PNP pattern: "PNP - A new class of coded aperture arrays," S. Gottesman and E. Schneid, IEEE Trans. Nucl. Sci., 33(1): 745-749 (1986).
+
+Pseudo-Random Sequences and Primitive Polynomials: F.J. MacWilliams and N.J.A. Sloane, "Pseudo-Random Sequences and Arrays", Proc. of the IEEE, 64, 1715 (1976).
+
 This package will use an axial coordinate system for the hexagonal grids. It will follow the concept outlined at https://www.redblobgames.com/grids/hexagons/#map-storage.
