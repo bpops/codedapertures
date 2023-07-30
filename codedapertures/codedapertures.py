@@ -12,7 +12,6 @@
 #
 
 from   commpy             import pnsequence
-import copy
 import numpy              as     np
 import matplotlib.pyplot  as     plt
 from   matplotlib.patches import RegularPolygon
@@ -464,8 +463,6 @@ class shura():
         for i in range(self.diam):
             for j in range(self.diam):
                 if (i+j > (self.radius-1)) and (i+j < (self.diam+self.radius)):
-                    # TODO: this next line should not work correctly. 
-                    # WHY does it work?
                     self.axial_matrix[i,j] = self.mask[i,j]
                 else:
                     self.axial_matrix[i,j] = np.nan
