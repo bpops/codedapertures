@@ -448,13 +448,13 @@ class shura():
         # determine labels
         self.rx = self.diam
         self.ry = self.diam
-        self.l = np.zeros((self.rx,self.ry))
+        self.l = np.zeros((self.rx,self.ry), dtype=np.int16)
         for i in range(self.rx):
             for j in range(self.ry):
                 self.l[i,j] = (i + r*j) % self.v
 
         # calculate mask
-        self.mask = np.zeros(self.l.shape)
+        self.mask = np.zeros(self.l.shape, dtype=np.int16)
         for i in range(self.mask.shape[0]):
             for j in range(self.mask.shape[1]):
                 if self.l[i,j] in self.D:
@@ -499,84 +499,81 @@ class shura():
             n += 1
         return v
 
-        
-
     def report(self):
         """
         Report the array info
         """
         print("Skew-Hadamard Uniformly Redundant Array")
-        print(f"rank: {self.rank}")
-        print(f"n: {self.n}")
-        print(f"order (v): {self.v}")
-        print(f"k: {self.k}")
-        print(f"lambda: {self.lam}")
-        print(f"r: {self.r}")
-        print(f"side: {self.side_width}")
+        print(f"rank:       {self.rank}")
+        print(f"n:          {self.n}")
+        print(f"order (v):  {self.v}")
+        print(f"k:          {self.k}")
+        print(f"lambda:     {self.lam}")
+        print(f"r:          {self.r}")
+        print(f"side width: {self.side_width}")
   
-    def show_rhombus(self):
+    def show_rhombus(self, labels=False, labelsize=10):
         """
         Plot the mask rhombus
+
+        Parameters
+        ----------
+        labels : bool
+            if True, will show the labels on top of each pixel
+        labelsize: int
+            fontsize for labels
         """
 
-        # determine open/closed pixels
-        pix_close  = np.where(self.mask == 1)
-        pix_open   = np.where(self.mask == 0)
-        
-        # determine open/closed pixels
-        x_closed = pix_close[0]
-        y_closed = pix_close[1]
-        x_opened = pix_open[0]
-        y_opened = pix_open[1]
-
+        # determine hex vertex-to-vertex and radius
         hex_vert = 1/(np.sqrt(3)/2)
         hex_radius = (hex_vert)/2.0
 
+        # set up plotting
         fig, ax = plt.subplots(1)
         ax.set_aspect('equal')
 
-        # closed pixels
-        for x, y in zip (x_closed, y_closed):
+        for x_i in range(self.mask.shape[0]):
+            for y_i in range(self.mask.shape[1]):
 
-            # determine patch origin
-            x += y * 0.5
-            y *= 1/hex_vert
+                # determine patch origin
+                x = x_i + y_i * 0.5
+                y = y_i/hex_vert  
 
-            # recenter
-            x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0 -1/hex_vert
-            y -= (self.mask.shape[1] * 1/hex_vert)/2.0
+                # recenter
+                x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0 -1/hex_vert
+                y -= (self.mask.shape[1] * 1/hex_vert)/2.0 - hex_vert/2.0
 
-            # add hexagon
-            hex = RegularPolygon((x, y), numVertices=6, radius=hex_radius, 
-                                    orientation=np.radians(60), 
-                                    facecolor='k', alpha=0.6, edgecolor='k')
-            ax.add_patch(hex)
+                # add hexagon
+                if self.mask[x_i,y_i] == 1:
+                    facecolor='k'
+                else:
+                    facecolor='w'
+                hex = RegularPolygon((x, y), numVertices=6, radius=hex_radius, 
+                              orientation=np.radians(60), 
+                               facecolor=facecolor, alpha=0.6, edgecolor='k')
+                ax.add_patch(hex)
 
-        # open pixels
-        for x, y in zip (x_opened, y_opened):
-
-            # determine patch origin
-            x += y * 0.5
-            y *= np.sqrt(3)/2
-
-            # recenter
-            x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0 -1/hex_vert
-            y -= (self.mask.shape[1] * 1/hex_vert)/2.0
-
-            # add hexagon
-            hex = RegularPolygon((x, y), numVertices=6, radius=hex_radius, 
-                                    orientation=np.radians(60), 
-                                    facecolor='w', alpha=0.2, edgecolor='k')
-            ax.add_patch(hex)
+                # add label
+                if labels:
+                    plt.annotate(self.l[x_i,y_i], (x,y),
+                                 ha='center',va='center', fontsize=labelsize,
+                                 transform=ax.transAxes)
 
         plt.xlim(-self.rx/1.2,self.rx/1.2)
         plt.ylim(-self.ry/2.0,self.ry/2.0)
         plt.title(f"SHURA rhombus [o:{self.v}, r:{self.r}]")
         plt.show()
 
-    def show(self):
+    def show(self, labels=False, labelsize=10):
         """
         Plot the mask
+
+        Parameters
+        ----------
+        labels : bool
+            if True, will show the labels on top of each pixel
+        labelsize: int
+            fontsize for labels
         """
 
         # set up plot parameters
@@ -592,12 +589,19 @@ class shura():
             for x in range(row_width):
                 facecolor = 'k' if self.axial_matrix[x+start_i,y] == 1 else 'w'
                 alpha     = 0.6 if self.axial_matrix[x+start_i,y] == 1 else 0.3
+                label     = self.l[x+start_i,y]
                 hex = RegularPolygon((x+0.5*abs(y-self.radius)-self.radius,
                                       ((y-self.radius)*((3/2)*hex_vert/2.0))),
                                      numVertices=6, radius=hex_vert/2.0, 
                                      orientation=np.radians(60), 
-                                     facecolor=facecolor, alpha=alpha, edgecolor='k')
+                                     facecolor=facecolor, alpha=alpha,
+                                     edgecolor='k')
                 ax.add_patch(hex)
+                if labels:
+                    plt.annotate(label, (x+0.5*abs(y-self.radius)-self.radius,
+                                         (y-self.radius)*((3/2)*hex_vert/2.0)),
+                                 ha='center',va='center', fontsize=labelsize,
+                                 transform=ax.transAxes)
 
         # set axis limits
         plt.xlim(-self.radius*hex_vert,self.radius*hex_vert)
@@ -654,11 +658,11 @@ class rand_hex():
         Report the array info
         """
         print("Random Hexagonal Array")
-        print(f"radius: {self.radius}")
-        print(f"diameter: {self.diam}")
-        print(f"side_width: {self.side_width}")
-        print(f"desired fill factor: {self.fill:.2f}")
-        print(f"actual  fill factor: {self.actual_fill:.2f}")
+        print(f"radius:       {self.radius}")
+        print(f"diameter:     {self.diam}")
+        print(f"side width:   {self.side_width}")
+        print(f"desired fill: {self.fill:.2f}")
+        print(f"actual  fill: {self.actual_fill:.2f}")
 
     def show(self):
         """
@@ -682,7 +686,8 @@ class rand_hex():
                                       ((y-self.radius)*((3/2)*hex_vert/2.0))),
                                      numVertices=6, radius=hex_vert/2.0, 
                                      orientation=np.radians(60), 
-                                     facecolor=facecolor, alpha=alpha, edgecolor='k')
+                                     facecolor=facecolor, alpha=alpha,
+                                     edgecolor='k')
                 ax.add_patch(hex)
 
         # set axis limits
