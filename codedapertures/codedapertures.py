@@ -1,14 +1,22 @@
 #
-#       _____       _       _ _____             _                            
-#      |     |___ _| |___ _| |  _  |___ ___ ___| |_ _ _ ___ ___ ___          
-#      |   --| . | . | -_| . |     | . | -_|  _|  _| | |  _| -_|_ -|         
-#      |_____|___|___|___|___|__|__|  _|___|_| |_| |___|_| |___|___|         
-#                                  |_|                                       
+#           ____                __             __
+#          /\  _`\             /\ \           /\ \
+#          \ \ \/\_\    ___    \_\ \     __   \_\ \
+#           \ \ \/_/_  / __`\  /'_` \  /'__`\ /'_` \
+#      ______\ \ \L\ \/\ \L\ \/\ \L\ \__  __//\ \L\ \
+#     /\  _  \\ \____/\ \____/\ \___,/\ \____\ \___,_\
+#     \ \ \L\ \\/_____ \/_____ \/____\/\/,_\_/______ /_ __    __    ____
+#      \ \  __ \/\ '__`\  /'__`\/\`'__\ \ \/ /\ \/\ \/\`'__\/'__`\ /',__\
+#       \ \ \/\ \ \ \L\ \/\  __/\ \ \/ \ \ \_\ \ \_\ \ \ \//\  __//\__, `\
+#        \ \_\ \_\ \ ,__/\ \____\\ \_\  \ \__\\ \____/\ \_\\ \____\/\____/
+#         \/_/\/_/\ \ \/  \/____/ \/_/   \/__/ \/___/  \/_/ \/____/\/___/
+#                  \ \_\
+#                   \/_/
 #
-#            a python package for generating coded apertures                                                                        
+#              a python package for generating coded apertures                                                                        
 #
-#                             MIT license
-#                    https://github.com/bpops/cappy
+#                               MIT license
+#                      https://github.com/bpops/cappy
 #
 
 from   commpy             import pnsequence
@@ -416,7 +424,7 @@ class shura():
     r : int
         feeds into pattern (default 5)
     quiet : bool
-        if True, will print information about the array upon creation
+        if True, will not print information about the array upon creation
     """
 
     def __init__(self, rank=4, r=5, radius=5, quiet=False):
@@ -585,7 +593,7 @@ class shura():
             start_i   = np.max((self.radius-y,0))
             for x in range(row_width):
                 facecolor = 'k' if self.axial_matrix[x+start_i,y] == 1 else 'w'
-                alpha     = 0.6 if self.axial_matrix[x+start_i,y] == 1 else 0.3
+                alpha     = 0.9 if self.axial_matrix[x+start_i,y] == 1 else 0.3
                 label     = self.l[x+start_i,y]
                 hex = RegularPolygon((x+0.5*abs(y-self.radius)-self.radius,
                                       ((y-self.radius)*((3/2)*hex_vert/2.0))),
@@ -605,6 +613,219 @@ class shura():
         plt.ylim(-self.radius,self.radius)
         plt.title(f"SHURA [o:{self.v}, r:{self.r}]")
         plt.show()
+
+class hura():
+    """
+    Hexagonal Uniformly Redundant Array
+
+    Parameters
+    ----------
+    rank : int
+        determines the order, v, a prime of the form 3 or 12n+7
+    quiet : bool
+        if True, will not print information about the array upon creation
+    """
+
+    def __init__(self, rank=4, radius=5, quiet=False):
+        self.rank = rank
+        self.v    = self.get_order_from_rank(self.rank)
+        self.n    = int((self.v-7)/12)
+        self.r    = self.get_valid_r()
+
+        # calculate mask size
+        self.radius       = radius
+        self.diam         = self.radius*2+1
+        self.side_width   = radius + 1
+
+        # create axial matrix
+        self.axial_matrix = np.zeros((self.diam,self.diam))
+        self.loc_matrix   = np.zeros((2,self.diam,self.diam))
+
+        # calculate intermediates
+        self.k   = 2*self.n-1
+        self.lam = self.n-1
+
+        # construct cyclic difference set D
+        self.D = np.zeros((int((self.v-1)/2)), dtype=np.int32)
+        for i in range(len(self.D)):
+            self.D[i] = ((i+1)**2) % self.v
+
+        # determine labels
+        self.rx = self.diam
+        self.ry = self.diam
+        self.l = np.zeros((self.rx,self.ry), dtype=np.int16)
+        for i in range(self.rx):
+            for j in range(self.ry):
+                self.l[i,j] = (i + self.r*j) % self.v
+
+        # calculate mask
+        self.mask = np.zeros(self.l.shape, dtype=np.int16)
+        for i in range(self.mask.shape[0]):
+            for j in range(self.mask.shape[1]):
+                if self.l[i,j] in self.D:
+                    self.mask[i,j] = 1
+
+        # map to axial matrix
+        for i in range(self.diam):
+            for j in range(self.diam):
+                if (i+j > (self.radius-1)) and (i+j < (self.diam+self.radius)):
+                    self.axial_matrix[i,j] = self.mask[i,j]
+                else:
+                    self.axial_matrix[i,j] = np.nan
+
+        if not quiet: self.report()
+
+    def get_order_from_rank(self, rank):
+        """
+        Get the Order, v, from specified rank
+
+        Parameters
+        ----------
+        rank : int
+            rank, or nth order that satisfies 12n+7
+        """
+        if rank == 0:
+            return 3
+        else:
+            n = 0
+            this_rank = -1
+            while True:
+                v = 12*n +7
+                if pyprimes.isprime(v):
+                    this_rank += 1
+                if this_rank == rank:
+                    break
+                n += 1
+        return v
+    
+    def get_valid_r(self):
+        """
+        Determines the valid r from v
+
+        Returns
+        r : int
+            the value that satifies r**2 % v == (r-1) % v
+        """
+
+        r_not_found = True;
+        r = 0
+        while r_not_found:
+            if (r**2 % self.v) == ((r-1) % self.v):
+                r_not_found = False
+                break
+            r += 1
+        return r
+
+    def report(self):
+        """
+        Report the array info
+        """
+        print("Hexagonal Uniformly Redundant Array")
+        print(f"rank:       {self.rank}")
+        print(f"n:          {self.n}")
+        print(f"order (v):  {self.v}")
+        print(f"k:          {self.k}")
+        print(f"lambda:     {self.lam}")
+        print(f"r:          {self.r}")
+        print(f"side width: {self.side_width}")
+  
+    def show_rhombus(self, labels=False, labelsize=10):
+        """
+        Plot the mask rhombus
+
+        Parameters
+        ----------
+        labels : bool
+            if True, will show the labels on top of each pixel
+        labelsize: int
+            fontsize for labels
+        """
+
+        # determine hex vertex-to-vertex and radius
+        hex_vert = 1/(np.sqrt(3)/2)
+        hex_radius = (hex_vert)/2.0
+
+        # set up plotting
+        fig, ax = plt.subplots(1)
+        ax.set_aspect('equal')
+
+        for x_i in range(self.mask.shape[0]):
+            for y_i in range(self.mask.shape[1]):
+
+                # determine patch origin
+                x = x_i + y_i * 0.5
+                y = y_i/hex_vert  
+
+                # recenter
+                x -= (self.mask.shape[0] + self.mask.shape[1]/2.0)/2.0 -1/hex_vert
+                y -= (self.mask.shape[1] * 1/hex_vert)/2.0 - hex_vert/2.0
+
+                # add hexagon
+                if self.mask[x_i,y_i] == 1:
+                    facecolor='k'
+                else:
+                    facecolor='w'
+                hex = RegularPolygon((x, y), numVertices=6, radius=hex_radius, 
+                              orientation=np.radians(60), 
+                               facecolor=facecolor, alpha=0.6, edgecolor='k')
+                ax.add_patch(hex)
+
+                # add label
+                if labels:
+                    plt.annotate(self.l[x_i,y_i], (x,y),
+                                 ha='center',va='center', fontsize=labelsize,
+                                 transform=ax.transAxes)
+
+        plt.xlim(-self.rx/1.2,self.rx/1.2)
+        plt.ylim(-self.ry/2.0,self.ry/2.0)
+        plt.title(f"SHURA rhombus [o:{self.v}, r:{self.r}]")
+        plt.show()
+
+    def show(self, labels=False, labelsize=10):
+        """
+        Plot the mask
+
+        Parameters
+        ----------
+        labels : bool
+            if True, will show the labels on top of each pixel
+        labelsize: int
+            fontsize for labels
+        """
+
+        # set up plot parameters
+        fig, ax = plt.subplots(1)
+        ax.set_aspect('equal')
+        hex_width = 1.0 # face-to-face distance
+        hex_vert  = (hex_width)*(2.0/np.sqrt(3))
+
+        # draw hexagon array
+        for y in range(self.diam):
+            row_width = self.diam - abs(self.radius-y)
+            start_i   = np.max((self.radius-y,0))
+            for x in range(row_width):
+                facecolor = 'k' if self.axial_matrix[x+start_i,y] == 1 else 'w'
+                alpha     = 0.9 if self.axial_matrix[x+start_i,y] == 1 else 0.3
+                label     = self.l[x+start_i,y]
+                hex = RegularPolygon((x+0.5*abs(y-self.radius)-self.radius,
+                                      ((y-self.radius)*((3/2)*hex_vert/2.0))),
+                                     numVertices=6, radius=hex_vert/2.0, 
+                                     orientation=np.radians(60), 
+                                     facecolor=facecolor, alpha=alpha,
+                                     edgecolor='k')
+                ax.add_patch(hex)
+                if labels:
+                    plt.annotate(label, (x+0.5*abs(y-self.radius)-self.radius,
+                                         (y-self.radius)*((3/2)*hex_vert/2.0)),
+                                 ha='center',va='center', fontsize=labelsize,
+                                 transform=ax.transAxes)
+
+        # set axis limits
+        plt.xlim(-self.radius*hex_vert,self.radius*hex_vert)
+        plt.ylim(-self.radius,self.radius)
+        plt.title(f"HURA [o:{self.v}, r:{self.r}]")
+        plt.show()
+            
 
 class rand_hex():
     """
