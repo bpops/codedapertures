@@ -458,7 +458,9 @@ class shura():
         self.l = np.zeros((self.rx,self.ry), dtype=np.int16)
         for i in range(self.rx):
             for j in range(self.ry):
-                self.l[i,j] = (i + r*j) % self.v
+                i_idx = i - self.radius
+                j_idx = j - self.radius
+                self.l[i,j] = (i_idx + self.r*j_idx) % self.v
 
         # calculate mask
         self.mask = np.zeros(self.l.shape, dtype=np.int16)
@@ -656,7 +658,9 @@ class hura():
         self.l = np.zeros((self.rx,self.ry), dtype=np.int16)
         for i in range(self.rx):
             for j in range(self.ry):
-                self.l[i,j] = (i + self.r*j) % self.v
+                i_idx = i - self.radius
+                j_idx = j - self.radius
+                self.l[i,j] = (i_idx + self.r*j_idx) % self.v
 
         # calculate mask
         self.mask = np.zeros(self.l.shape, dtype=np.int16)
