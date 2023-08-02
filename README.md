@@ -18,6 +18,16 @@ pip install codedapertures
 
 See [demo.ipynb](https://github.com/bpops/codedapertures/blob/master/demo.ipynb) for examples of use.
 
+Coded patterns that this package can generate:
+- random array (1d)
+- random array (2d)
+- uniformly redundant array (URA)
+- modified uniformly redundant array (MURA)
+- pseudo-noise product array (PNP)
+- random array (hexagonal))
+- skew-Hadamard uniformly redundant array (SHURA)
+- hexagonal uniformly redundant array (HURA)
+
 ### Credits
 
 URA pattern: E. E. Fenimore and T. M. Cannon, "Coded aperture imaging with uniformly redundant arrays," Appl. Opt. 17, 337-347 (1978).
