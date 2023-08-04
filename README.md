@@ -16,8 +16,6 @@ Install with PIP:
 pip install codedapertures
 ```
 
-See [demo.ipynb](https://github.com/bpops/codedapertures/blob/master/demo.ipynb) for examples of use.
-
 Coded patterns that this package can generate:
 - random array (1d)
 - random array (2d)
@@ -27,6 +25,15 @@ Coded patterns that this package can generate:
 - random array (hexagonal))
 - skew-Hadamard uniformly redundant array (SHURA)
 - hexagonal uniformly redundant array (HURA)
+
+Note that for consistency with relevant decoding algorithms, we define the
+binary meaning as such
+| val | mask pixell |
+|---|---|
+| __0__ | closed |
+| __1__ | open |
+
+See [demo.ipynb](https://github.com/bpops/codedapertures/blob/master/demo.ipynb) for examples of use.
 
 ### Credits
 
