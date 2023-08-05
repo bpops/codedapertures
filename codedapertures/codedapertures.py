@@ -72,7 +72,7 @@ class mask_sq():
         self.A_ij  = new_mask
 
 
-class rand_1d(mask_sq):
+class rand1d(mask_sq):
     """
     Random 1-dimensional Array
 
@@ -154,7 +154,7 @@ class rand_1d(mask_sq):
         plt.title("Random 1D")
         plt.show()
 
-class rand_2d(mask_sq):
+class rand2d(mask_sq):
     """
     Random 2-dimensional Array
 
@@ -408,7 +408,7 @@ class mura(mask_sq):
             size of the plot (default 8)
         """
         plt.rcParams['figure.figsize'] = [size,size]
-        cmap = "binary_r" if inverse else "binary"
+        cmap = "binary" if inverse else "binary_r"
         plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
         plt.axis('off')
         plt.title("MURA")
@@ -833,7 +833,7 @@ class hura():
         plt.show()
             
 
-class rand_hex():
+class randhex():
     """
     Random Hexagonal Array
 

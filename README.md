@@ -7,24 +7,27 @@ CodedApertures is a python module that allows one to easily generate and display
 
 New to coded apertures? Here's a nice article: https://www.paulcarlisle.net/codedaperture/
 
-PyPI URL: https://pypi.org/project/codedapertures/
+PyPI URL: 
 
 ### Usage
 
-Install with PIP:
+Install from [PyPI](https://pypi.org/project/codedapertures/) with PIP:
 ```
 pip install codedapertures
 ```
 
 Coded patterns that this package can generate:
-- random array (1d)
-- random array (2d)
-- uniformly redundant array (URA)
-- modified uniformly redundant array (MURA)
-- pseudo-noise product array (PNP)
-- random array (hexagonal))
-- skew-Hadamard uniformly redundant array (SHURA)
-- hexagonal uniformly redundant array (HURA)
+
+| class | coded aperture |
+|---|---|
+| __rand1d__ | random array (1D) |
+| __rand2d__ | random array (2D) |
+| __ura__ | uniformly redundant array |
+| __mura__ | modified uniformly redundant array |
+| __pnp__ | pseudo-noise product array |
+| __randhex__ | random array (hexagonal) |
+| __shura__ | skew-hadamard uniformly redundant array |
+| __hura__ | hexagonal uniformly redundant array |
 
 Note that for consistency with relevant decoding algorithms, we define the
 binary meaning as such
