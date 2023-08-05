@@ -465,11 +465,11 @@ class shura():
                 self.l[i,j] = (i_idx + self.r*j_idx) % self.v
 
         # calculate mask
-        self.mask = np.zeros(self.l.shape, dtype=np.int16)
+        self.mask = np.zeros(self.l.shape, dtype=np.int16)+1
         for i in range(self.mask.shape[0]):
             for j in range(self.mask.shape[1]):
                 if self.l[i,j] in self.D:
-                    self.mask[i,j] = 1
+                    self.mask[i,j] = 0
 
         # map to axial matrix
         for i in range(self.diam):
@@ -554,9 +554,9 @@ class shura():
 
                 # add hexagon
                 if self.mask[x_i,y_i] == 1:
-                    facecolor='k'
-                else:
                     facecolor='w'
+                else:
+                    facecolor='k'
                 hex = RegularPolygon((x, y), numVertices=6, radius=hex_radius, 
                               orientation=np.radians(60), 
                                facecolor=facecolor, alpha=0.6, edgecolor='k')
@@ -596,8 +596,8 @@ class shura():
             row_width = self.diam - abs(self.radius-y)
             start_i   = np.max((self.radius-y,0))
             for x in range(row_width):
-                facecolor = 'k' if self.axial_matrix[x+start_i,y] == 1 else 'w'
-                alpha     = 0.9 if self.axial_matrix[x+start_i,y] == 1 else 0.3
+                facecolor = 'w' if self.axial_matrix[x+start_i,y] == 1 else 'k'
+                alpha     = 0.3 if self.axial_matrix[x+start_i,y] == 1 else 0.9
                 label     = self.l[x+start_i,y]
                 hex = RegularPolygon((x+0.5*abs(y-self.radius)-self.radius,
                                       ((y-self.radius)*((3/2)*hex_vert/2.0))),
@@ -665,11 +665,11 @@ class hura():
                 self.l[i,j] = (i_idx + self.r*j_idx) % self.v
 
         # calculate mask
-        self.mask = np.zeros(self.l.shape, dtype=np.int16)
+        self.mask = np.zeros(self.l.shape, dtype=np.int16)+1
         for i in range(self.mask.shape[0]):
             for j in range(self.mask.shape[1]):
                 if self.l[i,j] in self.D:
-                    self.mask[i,j] = 1
+                    self.mask[i,j] = 0
 
         # map to axial matrix
         for i in range(self.diam):
@@ -768,9 +768,9 @@ class hura():
 
                 # add hexagon
                 if self.mask[x_i,y_i] == 1:
-                    facecolor='k'
-                else:
                     facecolor='w'
+                else:
+                    facecolor='k'
                 hex = RegularPolygon((x, y), numVertices=6, radius=hex_radius, 
                               orientation=np.radians(60), 
                                facecolor=facecolor, alpha=0.6, edgecolor='k')
@@ -810,8 +810,8 @@ class hura():
             row_width = self.diam - abs(self.radius-y)
             start_i   = np.max((self.radius-y,0))
             for x in range(row_width):
-                facecolor = 'k' if self.axial_matrix[x+start_i,y] == 1 else 'w'
-                alpha     = 0.9 if self.axial_matrix[x+start_i,y] == 1 else 0.3
+                facecolor = 'w' if self.axial_matrix[x+start_i,y] == 1 else 'k'
+                alpha     = 0.3 if self.axial_matrix[x+start_i,y] == 1 else 0.9
                 label     = self.l[x+start_i,y]
                 hex = RegularPolygon((x+0.5*abs(y-self.radius)-self.radius,
                                       ((y-self.radius)*((3/2)*hex_vert/2.0))),
@@ -852,7 +852,7 @@ class randhex():
         self.radius       = radius
         self.diam         = self.radius*2+1
         self.side_width   = radius + 1
-        self.axial_matrix = np.zeros((self.diam,self.diam))
+        self.axial_matrix = np.zeros((self.diam,self.diam))+1
         self.loc_matrix   = np.zeros((2,self.diam,self.diam))
         self.fill         = fill
 
@@ -861,12 +861,12 @@ class randhex():
             for j in range(self.diam):
                 if (i+j > (self.radius-1)) and (i+j < (self.diam+self.radius)):
                     if random.random() < self.fill:
-                        self.axial_matrix[i,j] = 1
+                        self.axial_matrix[i,j] = 0
                 else:
                     self.axial_matrix[i,j] = np.nan
 
         # determine actual fill factor
-        self.actual_fill = np.sum(self.axial_matrix == 1) / np.sum(~np.isnan(self.axial_matrix))
+        self.actual_fill = 1- (np.sum(self.axial_matrix == 1) / np.sum(~np.isnan(self.axial_matrix)))
 
         # generate locations
         for i in range(self.diam):
@@ -904,8 +904,8 @@ class randhex():
             row_width = self.diam - abs(self.radius-y)
             start_i   = np.max((self.radius-y,0))
             for x in range(row_width):
-                facecolor = 'k' if self.axial_matrix[x+start_i,y] == 1 else 'w'
-                alpha     = 0.6 if self.axial_matrix[x+start_i,y] == 1 else 0.3
+                facecolor = 'w' if self.axial_matrix[x+start_i,y] == 1 else 'k'
+                alpha     = 0.3 if self.axial_matrix[x+start_i,y] == 1 else 0.9
                 hex = RegularPolygon((x+0.5*abs(y-self.radius)-self.radius,
                                       ((y-self.radius)*((3/2)*hex_vert/2.0))),
                                      numVertices=6, radius=hex_vert/2.0, 
@@ -981,8 +981,8 @@ class pnp():
             size of the plot (default 8)
         """
         plt.rcParams['figure.figsize'] = [size,size]
-        cmap = "binary_r" if inverse else "binary"
-        plt.imshow(self.mask, cmap="gray", origin='lower', aspect=1)
+        cmap = "binary" if inverse else "binary_r"
+        plt.imshow(self.mask, cmap=cmap, origin='lower', aspect=1)
         plt.axis('off')
         plt.title(f"Pseudo-Noise Product Array [m: {self.m}, n: {self.n}]")
         plt.show()
