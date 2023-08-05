@@ -28,7 +28,7 @@ Coded patterns that this package can generate:
 
 Note that for consistency with relevant decoding algorithms, we define the
 binary meaning as such
-| val | mask pixell |
+| val | mask pixel |
 |---|---|
 | __0__ | closed |
 | __1__ | open |

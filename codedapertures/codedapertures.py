@@ -25,6 +25,7 @@ import matplotlib.pyplot  as     plt
 from   matplotlib.patches import RegularPolygon
 import pyprimes
 import random
+from   scipy.signal       import correlate2d
 
 
 class mask_sq():
@@ -54,7 +55,7 @@ class mask_sq():
         mask = 1-self.A_ij if inverse else self.A_ij
         return mask
 
-    def add_border(self, width, empty=False):
+    def add_border(self, width):
         """
         Adds a border with the given width
 
@@ -67,7 +68,6 @@ class mask_sq():
         new_width  = self.width  + width*2
         new_height = self.height + width*2
         new_mask   = np.zeros((new_width, new_height))
-        if not empty: new_mask = new_mask +1
         new_mask[width:-width,width:-width] = self.A_ij
         self.A_ij  = new_mask
 
@@ -94,12 +94,12 @@ class rand_1d(mask_sq):
         self.fill = fill
         
         # randomly fill
-        A_ij = np.zeros([self.r, self.s])
+        A_ij = np.zeros([self.r, self.s])+1
         for i in range(self.r):
             if random.random() < self.fill:
-                A_ij[i,:] = 1
+                A_ij[i,:] = 0
         self.A_ij = A_ij
-        self.actual_fill = np.sum(A_ij[:,0])/(self.r)
+        self.actual_fill = (self.r-np.sum(A_ij[:,0]))/(self.r)
         
         # get width/height
         self.width = self.A_ij.shape[0]
@@ -148,7 +148,7 @@ class rand_1d(mask_sq):
             size of the plot (default 8)
         """
         plt.rcParams['figure.figsize'] = [size,size]
-        cmap = "binary_r" if inverse else "binary"
+        cmap = "binary" if inverse else "binary_r"
         plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
         plt.axis('off')
         plt.title("Random 1D")
@@ -176,13 +176,13 @@ class rand_2d(mask_sq):
         self.fill = fill
         
         # randomly fill
-        A_ij = np.zeros([self.r, self.s])
+        A_ij = np.zeros([self.r, self.s])+1
         for i in range(self.r):
             for j in range(self.s):
                 if random.random() < self.fill:
-                    A_ij[i,j] = 1
+                    A_ij[i,j] = 0
         self.A_ij = A_ij
-        self.actual_fill = np.sum(A_ij)/(self.r*self.s)
+        self.actual_fill = 1-np.sum(A_ij)/(self.r*self.s)
         
         # get width/height
         self.width = self.A_ij.shape[0]
@@ -211,7 +211,7 @@ class rand_2d(mask_sq):
             size of the plot (default 8)
         """
         plt.rcParams['figure.figsize'] = [size,size]
-        cmap = "binary_r" if inverse else "binary"
+        cmap = "binary" if inverse else "binary_r"
         plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
         plt.axis('off')
         plt.title("Random 2D")
@@ -236,7 +236,7 @@ class ura(mask_sq):
         self.mult = mult
         
         # get r, s
-        r, s = self.__get_prime_pairs(self.rank)
+        s, r = self.__get_prime_pairs(self.rank)
         self.r = r
         self.s = s
         
@@ -258,6 +258,8 @@ class ura(mask_sq):
                     A_IJ[I,J] = 1
                 elif C_r_I[I] * C_s_J[J] == 1:
                     A_IJ[I,J] = 1
+                else:
+                    A_IJ[I,J] = 0
 
         # generate A_ij
         m = self.mult
@@ -267,6 +269,7 @@ class ura(mask_sq):
                 A_ij[i,j] = A_IJ[i%r,j%s]
         A_ij = np.roll(A_ij, int((r+1)/2), axis=0)
         A_ij = np.roll(A_ij, int((s+1)/2), axis=1)
+        A_ij = np.transpose(A_ij)
         self.A_ij = A_ij
         
         # get width/height
@@ -325,9 +328,8 @@ class ura(mask_sq):
             size of the plot (default 8)
         """
         plt.rcParams['figure.figsize'] = [size,size]
-        cmap = "binary_r" if inverse else "binary"
+        cmap = "binary" if inverse else "binary_r"
         plt.imshow(np.transpose(self.A_ij), cmap=cmap, aspect=1)
-        plt.axis('off')
         plt.title("URA")
         plt.show()
 
@@ -1053,3 +1055,10 @@ def get_prime(rank):
             break
         m += 1
     return L
+
+def autocorrelate(array):
+    """
+    Performs auto correlation
+    """
+
+
