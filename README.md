@@ -7,8 +7,6 @@ CodedApertures is a python module that allows one to easily generate and display
 
 New to coded apertures? Here's a nice article: https://www.paulcarlisle.net/codedaperture/
 
-PyPI URL: 
-
 ### Usage
 
 Install from [PyPI](https://pypi.org/project/codedapertures/) with PIP:
