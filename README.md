@@ -20,21 +20,21 @@ Coded patterns that this package can generate:
 
 | class | coded aperture |
 |---|---|
-| __rand1d__ | random array (1D) |
-| __rand2d__ | random array (2D) |
-| __ura__ | uniformly redundant array |
-| __mura__ | modified uniformly redundant array |
-| __pnp__ | pseudo-noise product array |
-| __randhex__ | random array (hexagonal) |
-| __shura__ | skew-hadamard uniformly redundant array |
-| __hura__ | hexagonal uniformly redundant array |
+| rand1d | random array (1D) |
+| rand2d | random array (2D) |
+| ura | uniformly redundant array |
+| mura | modified uniformly redundant array |
+| pnp | pseudo-noise product array |
+| randhex | random array (hexagonal) |
+| shura | skew-hadamard uniformly redundant array |
+| hura | hexagonal uniformly redundant array |
 
 Note that for consistency with relevant decoding algorithms, we define the
 binary meaning as such
 | val | mask pixel |
 |---|---|
-| __0__ | closed |
-| __1__ | open |
+| 0 | closed |
+| 1 | open |
 
 See [demo.ipynb](https://github.com/bpops/codedapertures/blob/master/demo.ipynb) for examples of use.
 
