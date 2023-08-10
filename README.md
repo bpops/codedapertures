@@ -36,7 +36,7 @@ binary meaning as such
 
 See [demo.ipynb](https://github.com/bpops/codedapertures/blob/master/demo.ipynb) for examples of use.
 
-### Credits
+### References
 
 URA pattern: E. E. Fenimore and T. M. Cannon, "Coded aperture imaging with uniformly redundant arrays," Appl. Opt. 17, 337-347 (1978).
 
@@ -48,4 +48,4 @@ PNP pattern: "PNP - A new class of coded aperture arrays," S. Gottesman and E. S
 
 Pseudo-Random Sequences and Primitive Polynomials: F.J. MacWilliams and N.J.A. Sloane, "Pseudo-Random Sequences and Arrays", Proc. of the IEEE, 64, 1715 (1976).
 
-This package will use an axial coordinate system for the hexagonal grids. It will follow the concept outlined at https://www.redblobgames.com/grids/hexagons/#map-storage.
+This package uses an axial coordinate system for the hexagonal grids. It follows the concept outlined excellently at https://www.redblobgames.com/grids/hexagons/#map-storage.
