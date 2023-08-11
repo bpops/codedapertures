@@ -18,12 +18,12 @@ Coded patterns that this package can generate:
 
 | class | coded aperture |
 |---|---|
-| rand1d | random array (1D) |
-| rand2d | random array (2D) |
+| randa1d | random array (1D) |
+| randa2d | random array (2D) |
 | ura | uniformly redundant array |
 | mura | modified uniformly redundant array |
 | pnp | pseudo-noise product array |
-| randhex | random array (hexagonal) |
+| randahex | random array (hexagonal) |
 | shura | skew-hadamard uniformly redundant array |
 | hura | hexagonal uniformly redundant array |
 
