@@ -21,10 +21,12 @@
 
 from   commpy             import pnsequence
 import numpy              as     np
+from   matplotlib         import cm
 import matplotlib.pyplot  as     plt
 from   matplotlib.patches import RegularPolygon
 import pyprimes
 import random
+from   scipy.signal       import correlate2d
 
 
 class codedaperture():
@@ -98,7 +100,30 @@ class codedaperture():
         method : str
             "matched" or "balanced"
         """
-        pass
+        self.decoder = np.zeros(self.aperture.shape)
+        for i in range(self.decoder.shape[0]):
+            for j in range(self.decoder.shape[1]):
+                if method == "matched":
+                    self.decoder[i,j] = self.aperture[i,j]
+                if method == "balanced":
+                    if self.aperture[i,j] == 1:
+                        self.decoder[i,j] = 1
+                    else:
+                        self.decoder[i,j] = -1
+
+    def gen_psf(self):
+        """
+        Generate Point Spread Function
+        """
+
+        self.psf = correlate2d(self.aperture, self.decoder)
+
+        fig, ax = plt.subplots(subplot_kw={"projection": "3d"})
+        x = np.arange(self.psf.shape[1])
+        y = np.arange(self.psf.shape[0])
+        x, y = np.meshgrid(x, y)
+        ax.plot_surface(x,y,self.psf, cmap=cm.coolwarm)
+        plt.title('Point Spread Function')
 
     def pre_plot(self, size=None):
         if size is None: size = 5
@@ -951,7 +976,7 @@ class hura(codedaperture):
         if True, will not print information about the array upon creation
 
     """
-    def __init__(self, rank=4, r=5, radius=5, quiet=False):
+    def __init__(self, rank=4, radius=5, quiet=False):
 
         # get/determine mask properties
         super().__init__("hexagonal")
@@ -1059,6 +1084,7 @@ class hura(codedaperture):
         print(f"k:            {self.k}")
         print(f"lambda:       {self.lamda}")
         print(f"r:            {self.r}")
+        print(f"diameter:     {self.diameter}")
         print(f"side width:   {self.side_width}")
 
     def plot_rhombus(self, labels=False, labelsize=8, axis=True, size=None):
