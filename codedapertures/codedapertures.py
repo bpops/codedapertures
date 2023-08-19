@@ -1187,3 +1187,92 @@ class hura(codedaperture):
         plt.xlim(-self.radius*hex_vert,self.radius*hex_vert)
         plt.ylim(-self.radius,self.radius)
         super().post_plot(axis=axis, title=f"{self.name}")
+
+
+class fzp(codedaperture):
+    """
+    Fresnel Zone Plate
+
+    Parameters
+    ----------
+    radius : int
+        radius of the aperture to build
+    resolution : int
+        number of pixels per radius
+    transmission : str
+        "theoretical": transmission is floating point number
+        "practical": transmission is 1/open or 0/closed
+    quiet : bool
+        if True, will not print information about the array upon creation
+    """
+    
+    def __init__(self, radius=4, resolution=10, transmission="theoretical",
+                 quiet=False):
+
+        # get/determine mask properties
+        super().__init__("rectangular")
+        self.name = "Fresnel Zone Plate"
+
+        # calculate mask size
+        self.radius       = radius
+        self.resolution   = resolution
+        self.width        = self.radius*self.resolution*2+1
+        self.height       = self.radius*self.resolution*2+1
+        self.transmission = transmission
+        
+        # calculate locations
+        self.r           = np.zeros((self.width, self.height))
+        for x in range(self.width):
+            for y in range(self.height):
+                r = np.sqrt((x-self.radius*self.resolution)**2 + 
+                            (y-self.radius*self.resolution)**2)
+                #r = np.sqrt((x)**2 + 
+                #            (y)**2) 
+                self.r[x,y] = r/self.resolution
+
+        # determine aperture
+        self.aperture    = np.zeros((self.width, self.height))
+        for x in range(self.width):
+            for y in range(self.height):
+                self.aperture[x,y] = np.cos(self.r[x,y]**2)
+
+        # modify if practical
+        if self.transmission == "practical":
+            self.aperture[np.where(self.aperture >= 0.5)] = 1
+            self.aperture[np.where(self.aperture < 0.5)]  = 0
+
+        if not quiet: self.report()
+
+    def report(self):
+        """
+        Report the array info
+        """
+        print("Fresnel Zone Plate")
+        print("------------------")
+        print(f"radius:       {self.radius}")
+        print(f"resolution:   {self.resolution}")
+        print(f"transmission: {self.transmission}")
+        print(f"width:        {self.width}")
+        print(f"height:       {self.height}")
+
+    def plot(self, border=0, axis="on", size=None):
+        """
+        Plots the coded aperture to the screen
+
+        Parameters
+        ----------
+        border : int
+            width of border
+        axis : str
+            "on" or "off"
+        size : int
+            size of the plot (default 8)
+        """
+        
+        super().pre_plot(size=size)
+        if border > 0:
+            pass
+        plt.imshow(self.aperture, cmap="gray", aspect=1)
+        plt.xlabel(f"width")
+        plt.ylabel(f"height")
+        super().post_plot(axis=axis, title=f"{self.name}")

@@ -23,6 +23,7 @@ Coded patterns that this package can generate:
 | ura | uniformly redundant array |
 | mura | modified uniformly redundant array |
 | pnp | pseudo-noise product array |
+| fzp | fresnel zone plate |
 | randahex | random array (hexagonal) |
 | shura | skew-hadamard uniformly redundant array |
 | hura | hexagonal uniformly redundant array |
@@ -47,5 +48,7 @@ SHURA and HURA pattern: M.H. Finger and T.A. Prince, "Hexagonal Uniformly Redund
 PNP pattern: "PNP - A new class of coded aperture arrays," S. Gottesman and E. Schneid, IEEE Trans. Nucl. Sci., 33(1): 745-749 (1986).
 
 Pseudo-Random Sequences and Primitive Polynomials: F.J. MacWilliams and N.J.A. Sloane, "Pseudo-Random Sequences and Arrays", Proc. of the IEEE, 64, 1715 (1976).
+
+Fresnel Zone Plates: L. Mertz and N.O. Young, "Fresnel Transformation of Images", Proc. Int. Conf. Opt. Instr. & Tech., Chapman and Hall, Londa, 305 (1961).
 
 This package uses an axial coordinate system for the hexagonal grids. It follows the concept outlined excellently at https://www.redblobgames.com/grids/hexagons/#map-storage.
