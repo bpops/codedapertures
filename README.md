@@ -5,7 +5,8 @@
 
 CodedApertures is a python package that allows one to easily generate and display common coded aperture patterns. Coded apertures are a spatial encoding technique for straight-line optics, wherein traditional lensing (e.g., visible light) is not possible. Even wherein tradiational lensing is possible, there may be other advantages (infinite depth of field). Coded apertures may be used for hard x-ray and gamma-ray imaging for astrophysics, medical imaging, industrial, and homeland security applications.
 
-New to coded apertures? Here's a nice article: https://www.paulcarlisle.net/codedaperture/.
+New to coded apertures? [Here's a nice article](https://www.paulcarlisle.net/codedaperture/).
+Want to dive deeper? [Here's a nice dissertation](https://dspace.mit.edu/handle/1721.1/8684).
 
 ### Usage
 
