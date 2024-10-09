@@ -10,6 +10,8 @@ import os
 import sys
 sys.path.insert(0, os.path.abspath('../../codedapertures'))
 
+master_doc = 'index'
+
 project = 'codedapertures'
 copyright = '2024, bpops'
 author = 'bpops'
