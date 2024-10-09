@@ -1,0 +1,1278 @@
+
+<!DOCTYPE html>
+
+
+<html lang="en" data-content_root="./" >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+    <title>codedapertures documentation &#8212; codedapertures  documentation</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+
+  
+  <link href="_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=a746c00c" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+    <script src="_static/documentation_options.js?v=5929fcd5"></script>
+    <script src="_static/doctools.js?v=9a2dae69"></script>
+    <script src="_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'index';</script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="en"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search the docs ..."
+         aria-label="Search the docs ..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
+  
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+<div class="bd-header__inner bd-page-width">
+  <button class="pst-navbar-icon sidebar-toggle primary-toggle" aria-label="Site navigation">
+    <span class="fa-solid fa-bars"></span>
+  </button>
+  
+  
+  <div class="col-lg-3 navbar-header-items__start">
+    
+      <div class="navbar-item">
+
+  
+    
+  
+
+<a class="navbar-brand logo" href="#">
+  
+  
+  
+  
+  
+  
+    <p class="title logo__title">codedapertures  documentation</p>
+  
+</a></div>
+    
+  </div>
+  
+  <div class="col-lg-9 navbar-header-items">
+    
+    <div class="me-auto navbar-header-items__center">
+      
+        <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+      
+    </div>
+    
+    
+    <div class="navbar-header-items__end">
+      
+        <div class="navbar-item navbar-persistent--container">
+          
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+        </div>
+      
+      
+        <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+      
+    </div>
+    
+  </div>
+  
+  
+    <div class="navbar-persistent--mobile">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script>
+    </div>
+  
+
+  
+    <button class="pst-navbar-icon sidebar-toggle secondary-toggle" aria-label="On this page">
+      <span class="fa-solid fa-outdent"></span>
+    </button>
+  
+</div>
+
+    </header>
+  
+
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      
+      
+        
+      
+      <div class="bd-sidebar-primary bd-sidebar hide-on-wide">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+      <div class="sidebar-header-items__center">
+        
+          
+          
+            <div class="navbar-item">
+<nav>
+  <ul class="bd-navbar-elements navbar-nav">
+    
+  </ul>
+</nav></div>
+          
+        
+      </div>
+    
+    
+    
+      <div class="sidebar-header-items__end">
+        
+          <div class="navbar-item">
+
+<script>
+document.write(`
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
+  </button>
+`);
+</script></div>
+        
+      </div>
+    
+  </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main" role="main">
+        
+        
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article d-print-none"></div>
+              
+              
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article">
+                  
+  <section id="codedapertures-documentation">
+<h1>codedapertures documentation<a class="headerlink" href="#codedapertures-documentation" title="Link to this heading">#</a></h1>
+<div class="toctree-wrapper compound">
+</div>
+<span class="target" id="module-codedapertures"></span><dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.codedaperture">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">codedaperture</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">type</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.codedaperture" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal notranslate"><span class="pre">object</span></code></p>
+<p>Coded Aperture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>type</strong><span class="classifier">str</span></dt><dd><p>“1d”, “rectangular”, or “hexagonal”</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>base</strong><span class="classifier">array_like</span></dt><dd><p>the “base” pattern; for rectangular arrays, this is the base pattern
+prior to tiling; for non-random hexagonal arrays, this is the rhombus</p>
+</dd>
+<dt><strong>aperture</strong><span class="classifier">array_like</span></dt><dd><p>the physical coded aperture pattern; 1=open, 0=closed</p>
+</dd>
+<dt><strong>decoder</strong><span class="classifier">array_like</span></dt><dd><p>the decoding matrix</p>
+</dd>
+<dt><strong>density</strong><span class="classifier">float</span></dt><dd><p>ratio of closed to total number of pixels</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.codedaperture.gen_decoder" title="codedapertures.codedaperture.gen_decoder"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code></a>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.codedaperture.gen_psf" title="codedapertures.codedaperture.gen_psf"><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code></a>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py property">
+<dt class="sig sig-object py" id="codedapertures.codedaperture.aperture">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">aperture</span></span><a class="headerlink" href="#codedapertures.codedaperture.aperture" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.codedaperture.gen_decoder">
+<span class="sig-name descname"><span class="pre">gen_decoder</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">method</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'matched'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.codedaperture.gen_decoder" title="Link to this definition">#</a></dt>
+<dd><p>Generate decoder matrix</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>method</strong><span class="classifier">str</span></dt><dd><p>“matched” or “balanced”</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.codedaperture.gen_psf">
+<span class="sig-name descname"><span class="pre">gen_psf</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.codedaperture.gen_psf" title="Link to this definition">#</a></dt>
+<dd><p>Generate Point Spread Function</p>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.codedaperture.post_plot">
+<span class="sig-name descname"><span class="pre">post_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'on'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">title</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.codedaperture.post_plot" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.codedaperture.pre_plot">
+<span class="sig-name descname"><span class="pre">pre_plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.codedaperture.pre_plot" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+<dl class="py property">
+<dt class="sig sig-object py" id="codedapertures.codedaperture.type">
+<em class="property"><span class="pre">property</span><span class="w"> </span></em><span class="sig-name descname"><span class="pre">type</span></span><a class="headerlink" href="#codedapertures.codedaperture.type" title="Link to this definition">#</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.fzp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">fzp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">resolution</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">transmission</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'theoretical'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.fzp" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codedapertures.codedaperture" title="codedapertures.codedaperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">codedaperture</span></code></a></p>
+<p>Fresnel Zone Plate</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>radius of the aperture to build</p>
+</dd>
+<dt><strong>resolution</strong><span class="classifier">int</span></dt><dd><p>number of pixels per radius</p>
+</dd>
+<dt><strong>transmission</strong><span class="classifier">str</span></dt><dd><p>“theoretical”: transmission is floating point number
+“practical”: transmission is 1/open or 0/closed</p>
+</dd>
+<dt><strong>quiet</strong><span class="classifier">bool</span></dt><dd><p>if True, will not print information about the array upon creation</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>aperture</strong></dt><dd></dd>
+<dt><strong>type</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.fzp.plot" title="codedapertures.fzp.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([border, axis, size])</p></td>
+<td><p>Plots the coded aperture to the screen</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.fzp.report" title="codedapertures.fzp.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a>()</p></td>
+<td><p>Report the array info</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.fzp.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'on'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.fzp.plot" title="Link to this definition">#</a></dt>
+<dd><p>Plots the coded aperture to the screen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>border</strong><span class="classifier">int</span></dt><dd><p>width of border</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">str</span></dt><dd><p>“on” or “off”</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot (default 8)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.fzp.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.fzp.report" title="Link to this definition">#</a></dt>
+<dd><p>Report the array info</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.hura">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">hura</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.hura" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codedapertures.codedaperture" title="codedapertures.codedaperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">codedaperture</span></code></a></p>
+<p>Hexagonal Uniformly Redundant Array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rank</strong><span class="classifier">int</span></dt><dd><p>determines the order, v, a prime of the form 3 or 12n+7
+radius</p>
+</dd>
+<dt><strong>quiet</strong><span class="classifier">bool</span></dt><dd><p>if True, will not print information about the array upon creation</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>aperture</strong></dt><dd></dd>
+<dt><strong>type</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.hura.plot" title="codedapertures.hura.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([labels, labelsize, axis, size])</p></td>
+<td><p>Plot the aperture</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.hura.plot_rhombus" title="codedapertures.hura.plot_rhombus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_rhombus</span></code></a>([labels, labelsize, axis, size])</p></td>
+<td><p>Plot the mask rhombus</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.hura.report" title="codedapertures.hura.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a>()</p></td>
+<td><p>Report the array info</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.hura.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.hura.plot" title="Link to this definition">#</a></dt>
+<dd><p>Plot the aperture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>labels</strong><span class="classifier">bool</span></dt><dd><p>if True, will show the labels on top of each pixel</p>
+</dd>
+<dt><strong>labelsize</strong><span class="classifier">int</span></dt><dd><p>fontsize for labels</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">bool</span></dt><dd><p>if False, will not plot axis</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.hura.plot_rhombus">
+<span class="sig-name descname"><span class="pre">plot_rhombus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.hura.plot_rhombus" title="Link to this definition">#</a></dt>
+<dd><p>Plot the mask rhombus</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>labels</strong><span class="classifier">bool</span></dt><dd><p>if True, will show the labels on top of each pixel</p>
+</dd>
+<dt><strong>labelsize</strong><span class="classifier">int</span></dt><dd><p>fontsize for labels</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">bool</span></dt><dd><p>if False, will not plot axis</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.hura.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.hura.report" title="Link to this definition">#</a></dt>
+<dd><p>Report the array info</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.mura">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">mura</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.mura" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codedapertures.codedaperture" title="codedapertures.codedaperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">codedaperture</span></code></a></p>
+<p>Modified Uniformly Redundant Array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rank</strong><span class="classifier">int</span></dt><dd><p>the rank of prime to use</p>
+</dd>
+<dt><strong>tile</strong><span class="classifier">None or int or tuple of ints</span></dt><dd><p>how to tile the pattern</p>
+</dd>
+<dt><strong>quiet</strong><span class="classifier">bool</span></dt><dd><p>if True, will print information about the array upon creation</p>
+</dd>
+<dt><strong>center: bool</strong></dt><dd><p>if True, will center the base pattern in the array</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>aperture</strong></dt><dd></dd>
+<dt><strong>type</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.mura.plot" title="codedapertures.mura.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([border, axis, size])</p></td>
+<td><p>Plots the coded aperture to the screen</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.mura.report" title="codedapertures.mura.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a>()</p></td>
+<td><p>Report on the mask information</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.mura.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'on'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.mura.plot" title="Link to this definition">#</a></dt>
+<dd><p>Plots the coded aperture to the screen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>border</strong><span class="classifier">int</span></dt><dd><p>width of border</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">str</span></dt><dd><p>“on” or “off”</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot (default 8)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.mura.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.mura.report" title="Link to this definition">#</a></dt>
+<dd><p>Report on the mask information</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.pnp">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">pnp</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">m</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">n</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.pnp" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codedapertures.codedaperture" title="codedapertures.codedaperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">codedaperture</span></code></a></p>
+<p>Pseudo-Noise Product Array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>m</strong><span class="classifier">int</span></dt><dd><p>degree of a_i</p>
+</dd>
+<dt><strong>n</strong><span class="classifier">int</span></dt><dd><p>degree of b_i</p>
+</dd>
+<dt><strong>tile</strong><span class="classifier">None or int or tuple of ints</span></dt><dd><p>how to tile the pattern</p>
+</dd>
+<dt><strong>quiet</strong><span class="classifier">bool</span></dt><dd><p>if True, will print information about the array upon creation</p>
+</dd>
+<dt><strong>center: bool</strong></dt><dd><p>if True, will center the base pattern in the array</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>aperture</strong></dt><dd></dd>
+<dt><strong>type</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.pnp.plot" title="codedapertures.pnp.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([border, axis, size])</p></td>
+<td><p>Plots the coded aperture to the screen</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.pnp.report" title="codedapertures.pnp.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a>()</p></td>
+<td><p>Report the array info</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.pnp.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'on'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.pnp.plot" title="Link to this definition">#</a></dt>
+<dd><p>Plots the coded aperture to the screen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>border</strong><span class="classifier">int</span></dt><dd><p>width of border</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">str</span></dt><dd><p>“on” or “off”</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot (default 8)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.pnp.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.pnp.report" title="Link to this definition">#</a></dt>
+<dd><p>Report the array info</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.randa1d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">randa1d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">length</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">30</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.randa1d" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codedapertures.codedaperture" title="codedapertures.codedaperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">codedaperture</span></code></a></p>
+<p>Random Array 1-Dimensional</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>length</strong><span class="classifier">int</span></dt><dd><p>number of elements in the array</p>
+</dd>
+<dt><strong>density</strong><span class="classifier">float</span></dt><dd><p>fill factor fraction</p>
+</dd>
+<dt><strong>quiet</strong><span class="classifier">bool</span></dt><dd><p>if True, will print mask info upon creation</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>aperture</strong></dt><dd></dd>
+<dt><strong>type</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.randa1d.plot" title="codedapertures.randa1d.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([height, size, axis])</p></td>
+<td><p>Plot the coded aperture to the screen</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.randa1d.report" title="codedapertures.randa1d.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a>()</p></td>
+<td><p>Report on the mask information</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.randa1d.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'on'</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.randa1d.plot" title="Link to this definition">#</a></dt>
+<dd><p>Plot the coded aperture to the screen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>inverse</strong><span class="classifier">bool, optional</span></dt><dd><p>if True, will invert the array before plotting</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int, optional</span></dt><dd><p>size of the plot (default 8)</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">str</span></dt><dd><p>“on” or “off</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.randa1d.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.randa1d.report" title="Link to this definition">#</a></dt>
+<dd><p>Report on the mask information</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.randa2d">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">randa2d</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">width</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">height</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">10</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.randa2d" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codedapertures.codedaperture" title="codedapertures.codedaperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">codedaperture</span></code></a></p>
+<p>Random Array 2-Dimensional</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>width</strong><span class="classifier">int</span></dt><dd><p>width in elements</p>
+</dd>
+<dt><strong>height</strong><span class="classifier">int</span></dt><dd><p>height in elements</p>
+</dd>
+<dt><strong>density</strong><span class="classifier">float</span></dt><dd><p>fill factor fraction</p>
+</dd>
+<dt><strong>quiet</strong><span class="classifier">bool</span></dt><dd><p>if True, will print mask info upon creation</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>aperture</strong></dt><dd></dd>
+<dt><strong>type</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.randa2d.plot" title="codedapertures.randa2d.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([axis, size])</p></td>
+<td><p>Plots the mask to the screen</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.randa2d.report" title="codedapertures.randa2d.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a>()</p></td>
+<td><p>Report on the mask information</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.randa2d.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'on'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.randa2d.plot" title="Link to this definition">#</a></dt>
+<dd><p>Plots the mask to the screen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>axis</strong><span class="classifier">str</span></dt><dd><p>“on” or “off”</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot (default 8)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.randa2d.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.randa2d.report" title="Link to this definition">#</a></dt>
+<dd><p>Report on the mask information</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.randahex">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">randahex</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">3</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">density</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0.5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.randahex" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codedapertures.codedaperture" title="codedapertures.codedaperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">codedaperture</span></code></a></p>
+<p>Random Array Hexagonal</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>radius</strong><span class="classifier">int</span></dt><dd><p>vertex-to-vertex radius of the array, minus half the pixel width</p>
+</dd>
+<dt><strong>density</strong><span class="classifier">float</span></dt><dd><p>fraction fill</p>
+</dd>
+<dt><strong>quiet</strong><span class="classifier">bool</span></dt><dd><p>if True, will print information about the array upon creation</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>diameter</strong><span class="classifier">int</span></dt><dd><p>due to the nature of hexagonal arrays, this is 2*radius+1</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.randahex.plot" title="codedapertures.randahex.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([axis, size])</p></td>
+<td><p>Plots the coded aperture to the screen</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.randahex.report" title="codedapertures.randahex.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a>()</p></td>
+<td><p>Report the array info</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.randahex.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'on'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.randahex.plot" title="Link to this definition">#</a></dt>
+<dd><p>Plots the coded aperture to the screen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>axis</strong><span class="classifier">str</span></dt><dd><p>“on” or “off”</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot (default 8)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.randahex.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.randahex.report" title="Link to this definition">#</a></dt>
+<dd><p>Report the array info</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.shura">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">shura</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">r</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">radius</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">5</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.shura" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codedapertures.codedaperture" title="codedapertures.codedaperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">codedaperture</span></code></a></p>
+<p>Skew-Hadamard Uniformly Redundant Array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rank</strong><span class="classifier">int</span></dt><dd><p>determines the order, v, a prime of the form v=4n-1 
+(default 6)</p>
+</dd>
+<dt><strong>r</strong><span class="classifier">int</span></dt><dd><p>feeds into pattern (default 5)</p>
+</dd>
+<dt><strong>quiet</strong><span class="classifier">bool</span></dt><dd><p>if True, will not print information about the array upon creation</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>diameter</strong><span class="classifier">int</span></dt><dd><p>due to the nature of hexagonal arrays, this is 2*radius+1</p>
+</dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.shura.plot" title="codedapertures.shura.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([labels, labelsize, axis, size])</p></td>
+<td><p>Plot the aperture</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.shura.plot_rhombus" title="codedapertures.shura.plot_rhombus"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot_rhombus</span></code></a>([labels, labelsize, axis, size])</p></td>
+<td><p>Plot the mask rhombus</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.shura.report" title="codedapertures.shura.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a>()</p></td>
+<td><p>Report the array info</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.shura.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.shura.plot" title="Link to this definition">#</a></dt>
+<dd><p>Plot the aperture</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>labels</strong><span class="classifier">bool</span></dt><dd><p>if True, will show the labels on top of each pixel</p>
+</dd>
+<dt><strong>labelsize</strong><span class="classifier">int</span></dt><dd><p>fontsize for labels</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">bool</span></dt><dd><p>if False, will not plot axis</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.shura.plot_rhombus">
+<span class="sig-name descname"><span class="pre">plot_rhombus</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">labels</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">labelsize</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">8</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">True</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.shura.plot_rhombus" title="Link to this definition">#</a></dt>
+<dd><p>Plot the mask rhombus</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>labels</strong><span class="classifier">bool</span></dt><dd><p>if True, will show the labels on top of each pixel</p>
+</dd>
+<dt><strong>labelsize</strong><span class="classifier">int</span></dt><dd><p>fontsize for labels</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">bool</span></dt><dd><p>if False, will not plot axis</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.shura.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.shura.report" title="Link to this definition">#</a></dt>
+<dd><p>Report the array info</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="py class">
+<dt class="sig sig-object py" id="codedapertures.ura">
+<em class="property"><span class="pre">class</span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">codedapertures.</span></span><span class="sig-name descname"><span class="pre">ura</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">rank</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">4</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">tile</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">quiet</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">center</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">False</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.ura" title="Link to this definition">#</a></dt>
+<dd><p>Bases: <a class="reference internal" href="#codedapertures.codedaperture" title="codedapertures.codedaperture"><code class="xref py py-class docutils literal notranslate"><span class="pre">codedaperture</span></code></a></p>
+<p>Uniformly Redundant Array</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>rank</strong><span class="classifier">int</span></dt><dd><p>the rank of prime pairs to use (0 -&gt; [5,3] 1 -&gt; [13,11], etc.)</p>
+</dd>
+<dt><strong>tile</strong><span class="classifier">None or int or tuple of ints</span></dt><dd><p>how to tile the pattern</p>
+</dd>
+<dt><strong>quiet</strong><span class="classifier">bool</span></dt><dd><p>if True, will print information about the array upon creation</p>
+</dd>
+<dt><strong>center: bool</strong></dt><dd><p>if True, will center the base pattern in the array</p>
+</dd>
+</dl>
+</dd>
+<dt class="field-even">Attributes<span class="colon">:</span></dt>
+<dd class="field-even"><dl class="simple">
+<dt><strong>aperture</strong></dt><dd></dd>
+<dt><strong>type</strong></dt><dd></dd>
+</dl>
+</dd>
+</dl>
+<p class="rubric">Methods</p>
+<div class="pst-scrollable-table-container"><table class="autosummary longtable table autosummary">
+<tbody>
+<tr class="row-odd"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_decoder</span></code>([method])</p></td>
+<td><p>Generate decoder matrix</p></td>
+</tr>
+<tr class="row-even"><td><p><code class="xref py py-obj docutils literal notranslate"><span class="pre">gen_psf</span></code>()</p></td>
+<td><p>Generate Point Spread Function</p></td>
+</tr>
+<tr class="row-odd"><td><p><a class="reference internal" href="#codedapertures.ura.plot" title="codedapertures.ura.plot"><code class="xref py py-obj docutils literal notranslate"><span class="pre">plot</span></code></a>([border, axis, size])</p></td>
+<td><p>Plots the mask to the screen</p></td>
+</tr>
+<tr class="row-even"><td><p><a class="reference internal" href="#codedapertures.ura.report" title="codedapertures.ura.report"><code class="xref py py-obj docutils literal notranslate"><span class="pre">report</span></code></a>()</p></td>
+<td><p>Report the array info</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="pst-scrollable-table-container"><table class="table">
+<tbody>
+<tr class="row-odd"><td><p><strong>post_plot</strong></p></td>
+<td></td>
+</tr>
+<tr class="row-even"><td><p><strong>pre_plot</strong></p></td>
+<td></td>
+</tr>
+</tbody>
+</table>
+</div>
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.ura.plot">
+<span class="sig-name descname"><span class="pre">plot</span></span><span class="sig-paren">(</span><em class="sig-param"><span class="n"><span class="pre">border</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">0</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">axis</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">'on'</span></span></em>, <em class="sig-param"><span class="n"><span class="pre">size</span></span><span class="o"><span class="pre">=</span></span><span class="default_value"><span class="pre">None</span></span></em><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.ura.plot" title="Link to this definition">#</a></dt>
+<dd><p>Plots the mask to the screen</p>
+<dl class="field-list simple">
+<dt class="field-odd">Parameters<span class="colon">:</span></dt>
+<dd class="field-odd"><dl class="simple">
+<dt><strong>border</strong><span class="classifier">int</span></dt><dd><p>width of border</p>
+</dd>
+<dt><strong>axis</strong><span class="classifier">str</span></dt><dd><p>“on” or “off”</p>
+</dd>
+<dt><strong>size</strong><span class="classifier">int</span></dt><dd><p>size of the plot (default 8)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</dd></dl>
+
+<dl class="py method">
+<dt class="sig sig-object py" id="codedapertures.ura.report">
+<span class="sig-name descname"><span class="pre">report</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#codedapertures.ura.report" title="Link to this definition">#</a></dt>
+<dd><p>Report the array info</p>
+</dd></dl>
+
+</dd></dl>
+
+</section>
+
+
+                </article>
+              
+              
+              
+              
+              
+                <footer class="prev-next-footer d-print-none">
+                  
+<div class="prev-next-area">
+</div>
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+
+  <div class="sidebar-secondary-item">
+<div
+    id="pst-page-navigation-heading-2"
+    class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> On this page
+  </div>
+  <nav class="bd-toc-nav page-toc" aria-labelledby="pst-page-navigation-heading-2">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.codedaperture"><code class="docutils literal notranslate"><span class="pre">codedaperture</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.codedaperture.aperture"><code class="docutils literal notranslate"><span class="pre">codedaperture.aperture</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.codedaperture.gen_decoder"><code class="docutils literal notranslate"><span class="pre">codedaperture.gen_decoder()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.codedaperture.gen_psf"><code class="docutils literal notranslate"><span class="pre">codedaperture.gen_psf()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.codedaperture.post_plot"><code class="docutils literal notranslate"><span class="pre">codedaperture.post_plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.codedaperture.pre_plot"><code class="docutils literal notranslate"><span class="pre">codedaperture.pre_plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.codedaperture.type"><code class="docutils literal notranslate"><span class="pre">codedaperture.type</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.fzp"><code class="docutils literal notranslate"><span class="pre">fzp</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.fzp.plot"><code class="docutils literal notranslate"><span class="pre">fzp.plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.fzp.report"><code class="docutils literal notranslate"><span class="pre">fzp.report()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.hura"><code class="docutils literal notranslate"><span class="pre">hura</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.hura.plot"><code class="docutils literal notranslate"><span class="pre">hura.plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.hura.plot_rhombus"><code class="docutils literal notranslate"><span class="pre">hura.plot_rhombus()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.hura.report"><code class="docutils literal notranslate"><span class="pre">hura.report()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.mura"><code class="docutils literal notranslate"><span class="pre">mura</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.mura.plot"><code class="docutils literal notranslate"><span class="pre">mura.plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.mura.report"><code class="docutils literal notranslate"><span class="pre">mura.report()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.pnp"><code class="docutils literal notranslate"><span class="pre">pnp</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.pnp.plot"><code class="docutils literal notranslate"><span class="pre">pnp.plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.pnp.report"><code class="docutils literal notranslate"><span class="pre">pnp.report()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.randa1d"><code class="docutils literal notranslate"><span class="pre">randa1d</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.randa1d.plot"><code class="docutils literal notranslate"><span class="pre">randa1d.plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.randa1d.report"><code class="docutils literal notranslate"><span class="pre">randa1d.report()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.randa2d"><code class="docutils literal notranslate"><span class="pre">randa2d</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.randa2d.plot"><code class="docutils literal notranslate"><span class="pre">randa2d.plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.randa2d.report"><code class="docutils literal notranslate"><span class="pre">randa2d.report()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.randahex"><code class="docutils literal notranslate"><span class="pre">randahex</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.randahex.plot"><code class="docutils literal notranslate"><span class="pre">randahex.plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.randahex.report"><code class="docutils literal notranslate"><span class="pre">randahex.report()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.shura"><code class="docutils literal notranslate"><span class="pre">shura</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.shura.plot"><code class="docutils literal notranslate"><span class="pre">shura.plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.shura.plot_rhombus"><code class="docutils literal notranslate"><span class="pre">shura.plot_rhombus()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.shura.report"><code class="docutils literal notranslate"><span class="pre">shura.report()</span></code></a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.ura"><code class="docutils literal notranslate"><span class="pre">ura</span></code></a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.ura.plot"><code class="docutils literal notranslate"><span class="pre">ura.plot()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#codedapertures.ura.report"><code class="docutils literal notranslate"><span class="pre">ura.report()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+  <div class="sidebar-secondary-item">
+
+  <div class="tocsection sourcelink">
+    <a href="_sources/index.rst.txt">
+      <i class="fa-solid fa-file-lines"></i> Show Source
+    </a>
+  </div>
+</div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+          </footer>
+        
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
+
+  <footer class="bd-footer">
+<div class="bd-footer__inner bd-page-width">
+  
+    <div class="footer-items__start">
+      
+        <div class="footer-item">
+
+  <p class="copyright">
+    
+      © Copyright 2024, bpops.
+      <br/>
+    
+  </p>
+</div>
+      
+        <div class="footer-item">
+
+  <p class="sphinx-version">
+    Created using <a href="https://www.sphinx-doc.org/">Sphinx</a> 8.0.2.
+    <br/>
+  </p>
+</div>
+      
+    </div>
+  
+  
+  
+    <div class="footer-items__end">
+      
+        <div class="footer-item">
+<p class="theme-version">
+  Built with the <a href="https://pydata-sphinx-theme.readthedocs.io/en/stable/index.html">PyData Sphinx Theme</a> 0.15.4.
+</p></div>
+      
+    </div>
+  
+</div>
+
+  </footer>
+  </body>
+</html>

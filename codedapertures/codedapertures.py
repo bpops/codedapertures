@@ -16,7 +16,7 @@
 #              a python package for generating coded apertures                                                                        
 #
 #                               MIT license
-#                      https://github.com/bpops/cappy
+#                 https://github.com/bpops/codedapertures
 #
 
 from   commpy             import pnsequence
@@ -657,7 +657,7 @@ class randahex(codedaperture):
     quiet : bool
         if True, will print information about the array upon creation
 
-    Parameters
+    Attributes
     ----------
     diameter : int
         due to the nature of hexagonal arrays, this is 2*radius+1
@@ -760,7 +760,7 @@ class shura(codedaperture):
     quiet : bool
         if True, will not print information about the array upon creation
 
-    Parameters
+    Attributes
     ----------
     diameter : int
         due to the nature of hexagonal arrays, this is 2*radius+1
