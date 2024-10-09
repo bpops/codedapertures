@@ -39,6 +39,8 @@ binary meaning as such
 
 See [demo.ipynb](https://github.com/bpops/codedapertures/blob/master/demo.ipynb) for examples of use.
 
+Read the [documentation](https://codedapertures.readthedocs.io) for detailed information.
+
 ### Build Documentation
 ```
 cd docs
