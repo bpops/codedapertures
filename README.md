@@ -5,9 +5,9 @@
 
 CodedApertures is a python package that allows one to easily generate and display common coded aperture patterns. Coded apertures are a spatial encoding technique for straight-line optics, wherein traditional lensing (e.g., visible light) is not possible. Even wherein tradiational lensing is possible, there may be other advantages (infinite depth of field). Coded apertures may be used for hard x-ray and gamma-ray imaging for astrophysics, medical imaging, industrial, and homeland security applications.
 
-New to coded apertures? [Here's a nice article](https://www.paulcarlisle.net/codedaperture/).
+New to coded apertures? [Here's a beginner article](https://www.paulcarlisle.net/codedaperture/).
 
-Want to dive deeper? [Here's a nice dissertation](https://dspace.mit.edu/handle/1721.1/8684).
+Want to dive deeper? [Here's a dissertation](https://dspace.mit.edu/handle/1721.1/8684).
 
 ### Usage
 
@@ -38,6 +38,12 @@ binary meaning as such
 | 0 | closed/opaque |
 
 See [demo.ipynb](https://github.com/bpops/codedapertures/blob/master/demo.ipynb) for examples of use.
+
+### Build Documentation
+```
+cd docs
+sphinx-build -M html source build
+```
 
 ### References
 
